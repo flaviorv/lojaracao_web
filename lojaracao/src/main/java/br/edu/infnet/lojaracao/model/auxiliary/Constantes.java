@@ -9,7 +9,7 @@ public class Constantes {
 	public static final String AROMA2 = "Banana";
 	public static final String AROMA3 = "Maracujá";
 	
-	public static final String PORTE1 = "Raçaas Pequenas";
+	public static final String PORTE1 = "Raças Pequenas";
 	public static final String PORTE2 = "Porte Médio";
 	public static final String PORTE3 = "Grande Porte";
 	

@@ -1,37 +1,18 @@
 package br.edu.infnet.lojaracao.model.domain;
 import br.edu.infnet.lojaracao.model.auxiliary.Constantes;
-import br.edu.infnet.lojaracao.model.exceptions.PalavraInvalidaException;
 
 public class Cao extends Racao {
-	private boolean semCorante;
-	private boolean filhotes;
+	private boolean semCorante = false;
+	private boolean filhotes = false;
 	private String porte; 
 	
-	public boolean isSemCorante() {
-		return semCorante;
-	}
-	public void setSemCorante(boolean semCorante) {
+	public Cao(String nome, int codigo, float preco, boolean filhotes, boolean semCorante, String porte) {
+		super(nome, codigo, preco);
 		this.semCorante = semCorante;
-	}
-	public boolean isFilhotes() {
-		return filhotes;
-	}
-	public void setFilhotes(boolean filhotes) {
 		this.filhotes = filhotes;
-	}
-	public String getPorte() {
-		return porte;
-	}
-	public void setPorte(String porte) throws PalavraInvalidaException{
-		if(porte != Constantes.PORTE1 && porte != Constantes.PORTE2 && porte != Constantes.PORTE3) {
-			throw new PalavraInvalidaException("Porte deve ser: " + Constantes.PORTE1 + ", " + Constantes.PORTE2 + " ou " + Constantes.PORTE3);
-		}
 		this.porte = porte;
 	}
 	
-	public Cao(String nome, int codigo, float preco) {
-		super(nome, codigo, preco);
-	}
 	@Override
 	public float calcularPrecoFinal(float preco) {
 		if(semCorante) {
