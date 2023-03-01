@@ -7,22 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.lojaracao.model.domain.Cao;
+import br.edu.infnet.lojaracao.model.repository.CaoRepository;
 
 @Controller
 public class CaoController {
 	@RequestMapping(value = "/cadastro/cao", method = RequestMethod.GET)
 	public String telaCadastro() {
-		return "cadastro/cao";
+		return "cao/cadastro";
 	}
 	
 	@PostMapping(value = "/cao/incluir")
 	public String incluirCao(Cao cao){
-		System.out.println(cao);
-		return "redirect:/confirmacao/cao";
+		CaoRepository.incluir(cao);
+		System.out.println(CaoRepository.obterLista());
+		return "redirect:/lista/cao";
 	}
 	
-	@GetMapping(value = "/confirmacao/cao")
+	@GetMapping(value = "/lista/cao")
 	public String confirmarCadastroCao() {
-		return "confirmacao/cao";
+		return "cao/lista";
 	}
 }

@@ -6,25 +6,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import br.edu.infnet.lojaracao.model.domain.Cliente;
+import br.edu.infnet.lojaracao.model.repository.ClienteRepository;
 
 @Controller
 public class ClienteController {
 	
 	@RequestMapping(value = "cadastro/cliente", method = RequestMethod.GET)
 	public String telaCadastro() {
-		return "cadastro/cliente";
+		return "cliente/cadastro";
 	}
 	
 	@PostMapping(value = "/cliente/incluir")
 	public String incluirCliente(Cliente cliente) {
-		System.out.println("Cliente: " + cliente);
+		ClienteRepository.incluir(cliente);
+		System.out.println(ClienteRepository.obterLista());
 		
-		return "redirect:/confirmacao/cliente";
+		return "redirect:/lista/cliente";
 	}
 	
-	@GetMapping(value = "/confirmacao/cliente")
+	@GetMapping(value = "/lista/cliente")
 	public String confirmarCadastroCliente() {
-		return "confirmacao/cliente";
+		return "cliente/lista";
 	}
 
 	

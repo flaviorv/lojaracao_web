@@ -7,24 +7,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.lojaracao.model.domain.Gato;
+import br.edu.infnet.lojaracao.model.repository.GatoRepository;
 
 @Controller
 public class GatoController {
 	
 	@RequestMapping(value = "cadastro/gato", method = RequestMethod.GET)
 	public String telaCadastro() {
-		return "cadastro/gato";
+		return "gato/cadastro";
 	}
 	
 	@PostMapping(value = "/gato/incluir")
 	public String incluirGato(Gato gato) {
-		System.out.println(gato);
+		GatoRepository.incluir(gato);
+		System.out.println(GatoRepository.obterLista());
 		
-		return "redirect:/confirmacao/gato";
+		return "redirect:/lista/gato";
 	}
 	
-	@GetMapping(value = "/confirmacao/gato")
+	@GetMapping(value = "/lista/gato")
 	public String confirmarCadastroGato() {
-		return "confirmacao/gato";
+		return "gato/lista";
 	}
 }

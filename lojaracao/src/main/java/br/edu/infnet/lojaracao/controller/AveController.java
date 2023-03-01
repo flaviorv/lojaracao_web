@@ -7,22 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.lojaracao.model.domain.Ave;
+import br.edu.infnet.lojaracao.model.repository.AveRepository;
 
 @Controller
 public class AveController {
 	@RequestMapping(value = "/cadastro/ave", method = RequestMethod.GET)
 	public String telaCadastro() {
-		return "cadastro/ave";
+		return "ave/cadastro";
 	}
 	
 	@PostMapping(value = "/ave/incluir")
 	public String incluirAve(Ave ave){
-		System.out.println(ave);
-		return "redirect:/confirmacao/ave";
+		AveRepository.incluir(ave);
+		System.out.println(AveRepository.obterLista());
+		return "redirect:/lista/ave";
 	}
 	
-	@GetMapping(value = "/confirmacao/ave")
+	@GetMapping(value = "/lista/ave")
 	public String confirmarCadastroAve() {
-		return "confirmacao/ave";
+		return "ave/lista";
 	}
 }

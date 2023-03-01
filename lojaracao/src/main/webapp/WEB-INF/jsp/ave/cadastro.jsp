@@ -10,8 +10,6 @@
 	<div class="container">	
 		<form action="/ave/incluir" method="post">
 			<h1 class="form-group">Cadastre uma nova ração de ave</h1>			
-			
-			
 			<div class="form-group">
 				<label for="nome">Nome:</label>
 				<input type="text" name="nome" value="Ração de Ave 1" class="form-control">

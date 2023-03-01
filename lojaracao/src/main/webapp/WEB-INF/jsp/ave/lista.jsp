@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" import="br.edu.infnet.lojaracao.model.repository.AveRepository" 
+contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,8 @@
 <body>
 	<div class="container">
 		<div class="form-group">
-			<h3>Ração cadastrada com sucesso!!!</h3>
+			<h1>Lista de rações de aves</h1>
+			<%= AveRepository.obterLista()%>
 		</div>
 		<div class="form-group">
 			<a href="/" ><button class="btn btn-primary">Ir para página inicial</button></a>
