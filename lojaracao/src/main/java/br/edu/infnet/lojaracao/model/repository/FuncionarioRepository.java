@@ -47,4 +47,9 @@ public class FuncionarioRepository {
 		return isFuncionarioLogado();
 	}
 	
+	public static void encerrarSessao() {
+		setFuncionarioLogado(false);
+		setFuncionarioStatus("");
+	}
+	
 }

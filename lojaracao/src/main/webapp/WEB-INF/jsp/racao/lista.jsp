@@ -1,4 +1,5 @@
-<%@ page language="java" import="br.edu.infnet.lojaracao.model.repository.RacaoRepository, br.edu.infnet.lojaracao.model.domain.Racao"
+<%@ page language="java" import="br.edu.infnet.lojaracao.model.repository.RacaoRepository, 
+br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,7 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %>
 				</tbody>
 			</table>
 			<div class="form-group">
-				<a href="/" ><button class="btn btn-primary">Página inicial</button></a>
+				<a href="/" ><button class="btn btn-primary">Página inicial</button></a>	
 			</div>
 		</div>
 	</div>

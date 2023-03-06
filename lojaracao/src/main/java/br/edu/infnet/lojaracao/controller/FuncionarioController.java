@@ -27,6 +27,7 @@ public class FuncionarioController {
 	public String validar(Funcionario funcionario) {
 		if(FuncionarioRepository.validarAcesso(funcionario)) {
 			FuncionarioRepository.setFuncionarioStatus("Bem vindo: " + funcionario.getNome());
+			FuncionarioRepository.setFuncionarioLogado(true);
 			return "redirect:/";
 		}	
 		return "redirect:/acesso/funcionario/invalido";
@@ -43,5 +44,12 @@ public class FuncionarioController {
 		FuncionarioRepository.incluir(funcionario);
 		return "redirect:/acesso/funcionario";
 	}
+	
+	@GetMapping(value = "/funcionario/sair")
+	public String telaIndex() {
+		FuncionarioRepository.encerrarSessao();
+		return "redirect:/";
+	}
+	
 	
 }

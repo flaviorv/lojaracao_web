@@ -43,11 +43,11 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 		</div>
 		<div class="form-group">
 			<% if(FuncionarioRepository.isFuncionarioLogado()){%>
-				<a href="/cadastro/cao" ><button class="btn btn-primary">Nova Ração</button></a>					
+				<a href="/cadastro/cao" ><button class="btn btn-primary">Nova Ração</button></a>
 			<% }else{ %>
 				<a href="/acesso/funcionario" ><button class="btn btn-primary">Nova Ração</button></a>	
 			<% } %>
-			<a href="/" ><button class="btn btn-primary">Página inicial</button></a>
+				<a href="/" ><button class="btn btn-primary">Página inicial</button></a>
 		</div>
 	</div>
 </body>

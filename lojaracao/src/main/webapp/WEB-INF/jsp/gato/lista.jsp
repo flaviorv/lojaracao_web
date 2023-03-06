@@ -47,7 +47,8 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %>
 			<% }else{ %>
 				<a href="/acesso/funcionario" ><button class="btn btn-primary">Nova Ração</button></a>	
 			<% } %>
-			<a href="/" ><button class="btn btn-primary">Página inicial</button></a>
+				<a href="/" ><button class="btn btn-primary">Página inicial</button></a>			
+			
 		</div>
 	</div>
 </body>
