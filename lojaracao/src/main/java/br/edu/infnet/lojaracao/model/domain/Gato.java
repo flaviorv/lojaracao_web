@@ -14,6 +14,18 @@ public class Gato extends Racao {
 		this.filhotes = filhotes;
 	}
 	
+	public String getSabor() {
+		return sabor;
+	}
+
+	public boolean isFilhotes() {
+		return filhotes;
+	}
+
+	public boolean isCastrado() {
+		return castrado;
+	}
+	
 	@Override
 	public float calcularPrecoFinal(float preco){
 		if(sabor == Constantes.SABOR3) {

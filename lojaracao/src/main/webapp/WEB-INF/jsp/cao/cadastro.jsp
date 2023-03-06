@@ -16,11 +16,11 @@
 			</div>
 			<div class="form-group">
 				<label for="codigo">Código:</label>
-				<input type="number"  min="0" max="999999" name="codigo" value="11" class="form-control">
+				<input type="number"  min="0" max="999999" name="codigo" value="1108" class="form-control">
 			</div>
 			<div class="form-group">
 				<label for="preco">Preço:</label>
-				<input type="number" step="0.01" min="0.01" max="999999" name="preco" value="23" class="form-control">
+				<input type="number" step="0.01" min="0.01" max="999999" name="preco" value="21" class="form-control">
 			</div>
 			<div class="form-group">
 				<label>Para Filhotes: </label>

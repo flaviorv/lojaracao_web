@@ -13,6 +13,18 @@ public class Ave extends Racao {
 		this.aroma = aroma;
 		this.peso = peso;	
 	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public String getAroma() {
+		return aroma;
+	}
+
+	public float getPeso() {
+		return peso;
+	}
 
 	@Override
 	public float calcularPrecoFinal(float preco){
@@ -43,8 +55,6 @@ public class Ave extends Racao {
 		sb.append(" - Código: " + super.getCodigo());
 		
 		return sb.toString();
-	}
-	
-	
+	}	
 	
 }

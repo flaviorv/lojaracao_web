@@ -13,6 +13,18 @@ public class Cao extends Racao {
 		this.porte = porte;
 	}
 	
+	public boolean isSemCorante() {
+		return semCorante;
+	}
+
+	public boolean isFilhotes() {
+		return filhotes;
+	}
+
+	public String getPorte() {
+		return porte;
+	}
+	
 	@Override
 	public float calcularPrecoFinal(float preco) {
 		if(semCorante) {

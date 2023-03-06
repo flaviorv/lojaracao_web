@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.lojaracao.model.domain.Ave;
 import br.edu.infnet.lojaracao.model.repository.AveRepository;
+import br.edu.infnet.lojaracao.model.repository.RacaoRepository;
 
 @Controller
 public class AveController {
@@ -17,14 +18,15 @@ public class AveController {
 	}
 	
 	@PostMapping(value = "/ave/incluir")
-	public String incluirAve(Ave ave){
+	public String incluir(Ave ave){
 		AveRepository.incluir(ave);
+		RacaoRepository.incluir(ave);
 		System.out.println(AveRepository.obterLista());
 		return "redirect:/lista/ave";
 	}
 	
 	@GetMapping(value = "/lista/ave")
-	public String confirmarCadastroAve() {
+	public String telaLista() {
 		return "ave/lista";
 	}
 }

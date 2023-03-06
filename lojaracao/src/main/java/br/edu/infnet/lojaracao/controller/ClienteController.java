@@ -17,7 +17,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping(value = "/cliente/incluir")
-	public String incluirCliente(Cliente cliente) {
+	public String incluir(Cliente cliente) {
 		ClienteRepository.incluir(cliente);
 		System.out.println(ClienteRepository.obterLista());
 		
@@ -25,7 +25,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping(value = "/lista/cliente")
-	public String confirmarCadastroCliente() {
+	public String telaLista() {
 		return "cliente/lista";
 	}
 

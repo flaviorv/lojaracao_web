@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.lojaracao.model.domain.Cao;
 import br.edu.infnet.lojaracao.model.repository.CaoRepository;
+import br.edu.infnet.lojaracao.model.repository.RacaoRepository;
 
 @Controller
 public class CaoController {
@@ -17,14 +18,15 @@ public class CaoController {
 	}
 	
 	@PostMapping(value = "/cao/incluir")
-	public String incluirCao(Cao cao){
+	public String incluir(Cao cao){
 		CaoRepository.incluir(cao);
+		RacaoRepository.incluir(cao);
 		System.out.println(CaoRepository.obterLista());
 		return "redirect:/lista/cao";
 	}
 	
 	@GetMapping(value = "/lista/cao")
-	public String confirmarCadastroCao() {
+	public String telaLista() {
 		return "cao/lista";
 	}
 }
