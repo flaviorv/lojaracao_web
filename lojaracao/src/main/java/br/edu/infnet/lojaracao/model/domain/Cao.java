@@ -6,8 +6,8 @@ public class Cao extends Racao {
 	private boolean filhotes = false;
 	private String porte; 
 	
-	public Cao(String nome, int codigo, float preco, boolean filhotes, boolean semCorante, String porte) {
-		super(nome, codigo, preco);
+	public Cao(Integer id, String nome, int codigo, float preco, boolean filhotes, boolean semCorante, String porte) {
+		super(id, nome, codigo, preco);
 		this.semCorante = semCorante;
 		this.filhotes = filhotes;
 		this.porte = porte;

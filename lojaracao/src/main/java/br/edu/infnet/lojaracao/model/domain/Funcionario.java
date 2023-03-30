@@ -4,7 +4,6 @@ public class Funcionario {
 	 private String nome;
 	 private String email;
 	 private String senha;
-
 	 
 	 public Funcionario(String nome, String email, String senha) 
 	 { 

@@ -1,24 +1,38 @@
 package br.edu.infnet.lojaracao.model.repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.edu.infnet.lojaracao.model.domain.Gato;
 
 public class GatoRepository {
 
-	private static List<Gato> lista = new ArrayList<Gato>();
+	private static Map<Integer, Gato> mapaGato = new HashMap<Integer, Gato>();
 	
-	public static void incluir(Gato gato) {
+	public static boolean incluir(Gato gato) {
 		try {
-			lista.add(gato);
+			Integer id = RacaoRepository.getId();
+			gato.setId(id);
+			RacaoRepository.setId(++id);
+			mapaGato.put(gato.getId(), gato);
+			System.out.println(RacaoRepository.getId());
+			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
 		}
-		
 	}
-	
-	public static List<Gato> obterLista() {
-		return lista;
+
+	public static Collection<Gato> obterLista() {
+		return (Collection<Gato>) mapaGato.values();
+	}
+
+	public static boolean excluir(Integer id) {
+		try {
+			mapaGato.remove(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

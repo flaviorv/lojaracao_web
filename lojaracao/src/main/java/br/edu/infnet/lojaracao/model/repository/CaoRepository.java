@@ -1,24 +1,38 @@
 package br.edu.infnet.lojaracao.model.repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.edu.infnet.lojaracao.model.domain.Cao;
 
 public class CaoRepository {
 
-	private static List<Cao> lista = new ArrayList<Cao>();
+private static Map<Integer, Cao> mapaCao = new HashMap<Integer, Cao>();
 	
-	public static void incluir(Cao cao) {
+	public static boolean incluir(Cao cao) {
 		try {
-			lista.add(cao);
+			Integer id = RacaoRepository.getId();
+			cao.setId(id);
+			RacaoRepository.setId(++id);
+			mapaCao.put(cao.getId(), cao);
+			System.out.println(RacaoRepository.getId());
+			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
 		}
-		
 	}
-	
-	public static List<Cao> obterLista() {
-		return lista;
+
+	public static Collection<Cao> obterLista() {
+		return (Collection<Cao>) mapaCao.values();
+	}
+
+	public static boolean excluir(Integer id) {
+		try {
+			mapaCao.remove(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

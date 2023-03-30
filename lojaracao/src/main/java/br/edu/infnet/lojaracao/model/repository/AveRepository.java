@@ -1,23 +1,36 @@
 package br.edu.infnet.lojaracao.model.repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.edu.infnet.lojaracao.model.domain.Ave;
 
 public class AveRepository {
-	private static List<Ave> lista = new ArrayList<Ave>();
-	
-	public static void incluir(Ave ave) {
+	private static Map<Integer, Ave> mapaAve = new HashMap<Integer, Ave>();
+	public static boolean incluir(Ave ave) {
 		try {
-			lista.add(ave);
+			Integer id = RacaoRepository.getId();
+			ave.setId(id);
+			RacaoRepository.setId(++id);
+			mapaAve.put(ave.getId(), ave);
+			System.out.println(RacaoRepository.getId());
+			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
 		}
-		
 	}
-	
-	public static List<Ave> obterLista() {
-		return lista;
+
+	public static Collection<Ave> obterLista() {
+		return (Collection<Ave>) mapaAve.values();
+	}
+
+	public static boolean excluir(Integer id) {
+		try {
+			mapaAve.remove(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

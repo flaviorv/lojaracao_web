@@ -1,6 +1,7 @@
 package br.edu.infnet.lojaracao.model.domain;
 
 public class Cliente {
+	private Integer id;
 	private String nome;
 	private String cpf;
 	private String telefone;
@@ -19,6 +20,8 @@ public class Cliente {
 		sb.append(cpf);
 		sb.append(";");
 		sb.append(telefone);
+		sb.append(";");
+		sb.append(id);
 		
 		return sb.toString();
 	}
@@ -33,5 +36,13 @@ public class Cliente {
 
 	public String getTelefone() {
 		return telefone;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

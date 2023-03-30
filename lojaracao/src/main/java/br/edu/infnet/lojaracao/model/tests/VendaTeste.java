@@ -13,13 +13,13 @@ public class VendaTeste {
 		Cliente cli2 = new Cliente("Mariana Almeida", "154.555.686-98", "(55)99987-9876");
 		List<Racao> listaRacao = new ArrayList<Racao>();
 		
-		Ave av2 = new Ave("RacaoAve2", 234, 24.23f, "Canário", "Mamão", 1.2f);
+		Ave av2 = new Ave(1, "RacaoAve2", 234, 24.23f, "Canário", "Mamão", 1.2f);
 		listaRacao.add(av2);
 
-		Cao c2 = new Cao("VaroCaoAmigo", 2519, 9.4f, true, false, "Grande Porte");
+		Cao c2 = new Cao(1, "VaroCaoAmigo", 2519, 9.4f, true, false, "Grande Porte");
 		listaRacao.add(c2);
 
-		Gato g2 = new Gato("VaroGatoArisco", 6549, 98.4f, "Peixe", true, false);
+		Gato g2 = new Gato(1, "VaroGatoArisco", 6549, 98.4f, "Peixe", true, false);
 		listaRacao.add(g2);
 		
 		Venda v1 = new Venda();

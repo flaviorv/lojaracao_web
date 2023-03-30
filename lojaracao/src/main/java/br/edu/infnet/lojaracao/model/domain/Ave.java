@@ -7,8 +7,8 @@ public class Ave extends Racao {
 	private String aroma;
 	private float peso;
 	
-	public Ave(String nome, int codigo, float preco, String tipo, String aroma, float peso){
-		super(nome, codigo, preco);
+	public Ave(Integer id, String nome, int codigo, float preco, String tipo, String aroma, float peso){
+		super(id, nome, codigo, preco);
 		this.tipo = tipo;
 		this.aroma = aroma;
 		this.peso = peso;	

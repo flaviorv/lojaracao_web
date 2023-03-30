@@ -1,36 +1,33 @@
 package br.edu.infnet.lojaracao.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.repository.FuncionarioRepository;
 
 @Controller
 public class FuncionarioController {
-	@RequestMapping(value = "/acesso/funcionario", method = RequestMethod.GET)
-	public String telaAcesso() {
+	@GetMapping(value = "/acesso/funcionario")
+	public String telaAcesso(Model model) {
 		FuncionarioRepository.setFuncionarioStatus("Acessar como funcionário");
+		model.addAttribute("funcionarioStatus", FuncionarioRepository.getFuncionarioStatus());
 		return "funcionario/acesso";
 	}
 	
-	@GetMapping(value = "/acesso/funcionario/invalido")
-	public String funcionarioInvalido() {
-		FuncionarioRepository.setFuncionarioStatus("Dados de funcionário inválido");
-		return "funcionario/acesso";
-	}
-	
-	@PostMapping(value = "/funcionario/validar")
-	public String validar(Funcionario funcionario) {
+	@PostMapping(value = "/funcionario/validar/index")
+	public String validarTelaIndex(Funcionario funcionario, Model model) {
 		if(FuncionarioRepository.validarAcesso(funcionario)) {
 			FuncionarioRepository.setFuncionarioStatus("Bem vindo: " + funcionario.getNome());
-			FuncionarioRepository.setFuncionarioLogado(true);
-			return "redirect:/";
+			model.addAttribute("funcionarioStatus", FuncionarioRepository.getFuncionarioStatus());
+			model.addAttribute("isFuncLogado", FuncionarioRepository.isFuncionarioLogado());
+			System.out.println(FuncionarioRepository.isFuncionarioLogado());
+			return "index";
 		}	
-		return "redirect:/acesso/funcionario/invalido";
+		FuncionarioRepository.setFuncionarioStatus("Dados de funcionário inválido");
+		model.addAttribute("funcionarioStatus", FuncionarioRepository.getFuncionarioStatus());
+		return "funcionario/acesso";
 	}
 
 	@GetMapping(value = "/cadastro/funcionario")
@@ -40,9 +37,11 @@ public class FuncionarioController {
 
 	
 	@PostMapping(value = "/funcionario/incluir")
-	public String incluir(Funcionario funcionario){
+	public String incluir(Model model, Funcionario funcionario){
 		FuncionarioRepository.incluir(funcionario);
-		return "redirect:/acesso/funcionario";
+		FuncionarioRepository.setFuncionarioStatus("Funcionário Cadastrado com Sucesso!");
+		model.addAttribute("funcionarioStatus", FuncionarioRepository.getFuncionarioStatus());
+		return "/funcionario/acesso";
 	}
 	
 	@GetMapping(value = "/funcionario/sair")
@@ -50,6 +49,5 @@ public class FuncionarioController {
 		FuncionarioRepository.encerrarSessao();
 		return "redirect:/";
 	}
-	
 	
 }

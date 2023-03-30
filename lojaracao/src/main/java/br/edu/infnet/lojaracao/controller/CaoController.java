@@ -1,10 +1,13 @@
 package br.edu.infnet.lojaracao.controller;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.lojaracao.model.domain.Cao;
 import br.edu.infnet.lojaracao.model.repository.CaoRepository;
@@ -26,7 +29,12 @@ public class CaoController {
 	}
 	
 	@GetMapping(value = "/lista/cao")
-	public String telaLista() {
+	public String telaLista(@RequestParam("id") Optional<String> idParam) {
+		System.out.println("Tentativa de exclusão pelo id: "+idParam.toString());
+		if(!idParam.isEmpty()) {
+			CaoRepository.excluir(Integer.parseInt(idParam.get().toString()));
+			RacaoRepository.excluir(Integer.parseInt(idParam.get().toString()));
+		}
 		return "cao/lista";
 	}
 }

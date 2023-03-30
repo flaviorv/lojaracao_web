@@ -1,24 +1,44 @@
 package br.edu.infnet.lojaracao.model.repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.edu.infnet.lojaracao.model.domain.Cliente;
 
 public class ClienteRepository {
+	private static Integer id = 1;
 
-	private static List<Cliente> lista = new ArrayList<Cliente>();
-	
+	private static Map<Integer, Cliente> mapaCliente = new HashMap<Integer, Cliente>();
+
+	public static Integer getId() {
+		return id;
+	}
+
+	public static void setId() {
+		ClienteRepository.id = id++;
+	}
+
 	public static void incluir(Cliente cliente) {
 		try {
-			lista.add(cliente);
+		cliente.setId(id++);
+		mapaCliente.put(cliente.getId(), cliente);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	public static List<Cliente> obterLista() {
-		return lista;
+
+	public static Collection<Cliente> obterLista() {
+		return (Collection<Cliente>) mapaCliente.values();
+	}
+
+	public static boolean excluir(Integer id) {
+		try {
+			mapaCliente.remove(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

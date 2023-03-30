@@ -1,18 +1,19 @@
 package br.edu.infnet.lojaracao.model.domain;
 
 public abstract class Racao {
-	
+	private Integer id;
 	private String nome;
 	private int codigo;
 	private float preco;
-	
-	public Racao(String nome, int codigo, float preco) {
+
+	public Racao(Integer id, String nome, int codigo, float preco) {
+		this.id = id;
 		this.nome = nome;
 		this.codigo = codigo;
-		this.preco = preco;	
-		
+		this.preco = preco;
+
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -37,5 +38,13 @@ public abstract class Racao {
 	}
 
 	public abstract float calcularPrecoFinal(float preco);
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 }
