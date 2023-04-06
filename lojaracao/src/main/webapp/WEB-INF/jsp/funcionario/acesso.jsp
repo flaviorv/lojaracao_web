@@ -22,18 +22,18 @@
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
 	<div class="container">
-		<h2>${funcionarioStatus}</h2>
 		<h1>Acesso</h1>
-		<form action="/funcionario/validar/index" method="post">
+		<h2>${status}</h2>
+		<form action="/funcionario/validar" method="post">
 			<div class="form-group">
 				<label for="email">Email:</label> <input type="text"
 					class="form-control" id="email" placeholder="Insira seu email"
-					name="email">
+					name="email" value="flavio@al.infnet.edu.com">
 			</div>
 			<div class="form-group">
 				<label for="senha">Senha:</label> <input type="password"
 					class="form-control" id="senha" placeholder="Insira sua senha"
-					name="senha">
+					name="senha" value="123">
 			</div>
 			<button type="submit" class="btn btn-primary">Acessar Conta</button>
 		</form>

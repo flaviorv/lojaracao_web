@@ -24,32 +24,25 @@ br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.reposi
 	</div>
 	<div class="container">
 		<div class="form-group">
-			<h1>Lista de todas as rações</h1>
+
+			<h1>Listagem de todas as rações</h1>
+			<h2>Total: <c:out value="${racao.obterLista().size()}"></c:out></h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th class="table-info">Id</th>
 						<th class="table-info">Nome</th>
 						<th class="table-info">Código</th>
 						<th class="table-info">Preço</th>
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					for (Racao item : RacaoRepository.obterLista()) {
-					%>
-					<tr>
-						<%
-						String id = String.valueOf(item.getId());
-						%>
-						<td><%=id%></td>
-						<td><%=item.getNome()%></td>
-						<td><%=item.getCodigo()%></td>
-						<td>R$<%=item.getPreco()%></td>
-					</tr>
-					<%
-					}
-					%>
+					<c:forEach var="racao" items="${racao.obterLista()}">
+						<tr>
+							<td>${racao.getNome()}</td>
+							<td>${racao.getCodigo()}</td>
+							<td>${racao.getPreco()}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<div class="form-group">
@@ -58,5 +51,7 @@ br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.reposi
 			</div>
 		</div>
 	</div>
+
+
 </body>
 </html>

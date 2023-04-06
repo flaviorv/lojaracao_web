@@ -42,9 +42,8 @@ li a:hover {
 	<div>
 
 		<ul>
-
 			<li><a href="/">Início</a></li>
-			<c:if test="${isFuncLogado eq 'false'}">
+			<c:if test="${empty funcionarioLogado}">
 				<li><span>RAÇÕES VAROTO - Nutrindo com qualidade!</span></li>
 				<li><a href="/acesso/funcionario">Acessar Conta</a><a
 					href="/cadastro/funcionario">Criar Conta</a></li>
@@ -52,15 +51,15 @@ li a:hover {
 
 
 
-			<c:if test="${isFuncLogado}">
+			<c:if test="${not empty funcionarioLogado }">
 
-				<li><span>${funcionarioStatus}</span></li>
+				<li><span>${funcionarioLogado}</span></li>
 				<li><a href="/funcionario/sair">Sair</a></li>
 			</c:if>
 		</ul>
 
 
-		<c:if test="${isFuncLogado}">
+		<c:if test="${not empty funcionarioLogado}">
 
 			<ul class="conteudoJunto">
 				<li>Cadastrar:</li>
@@ -73,8 +72,8 @@ li a:hover {
 			</ul>
 			<ul class="conteudoJunto">
 				<li>Listar:</li>
-				<li><a href="/lista/cliente">Cliente</a></li>
-				<li><a href="lista/racao">Todas as Rações</a></li>
+				<li><a href="/lista/cliente">Clientes</a></li>
+				<li><a href="/lista/racao">Todas as Rações</a></li>
 				<li><a href="/lista/ave">Rações de Ave</a></li>
 				<li><a href="/lista/cao">Rações de Cachorro</a></li>
 				<li><a href="/lista/gato">Rações de Gato</a></li>

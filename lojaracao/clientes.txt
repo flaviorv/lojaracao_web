@@ -1,0 +1,3 @@
+Cliente Maria;131640;312560;0
+Cliente Alessandra;1354641;34561;1
+Cliente Daniel;13154642;34562;2

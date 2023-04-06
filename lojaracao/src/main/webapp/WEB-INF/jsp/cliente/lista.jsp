@@ -1,3 +1,4 @@
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
 <%@ page language="java"
 	import="br.edu.infnet.lojaracao.model.repository.ClienteRepository, 
 br.edu.infnet.lojaracao.model.domain.Cliente,
@@ -25,15 +26,15 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 	</div>
 	<div class="container">
 
-		<%
-		if (FuncionarioRepository.isFuncionarioLogado()) {
-		%>
 		<div class="form-group">
-			<h1>Lista de Clientes</h1>
+			<h1>Lista de clientes</h1>
+			<h2>
+				Total:
+				<c:out value="${cliente.obterLista().size()}"></c:out>
+			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th class="table-info">Id</th>
 						<th class="table-info">Nome</th>
 						<th class="table-info">Cpf</th>
 						<th class="table-info">Telefone</th>
@@ -41,43 +42,25 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					for (Cliente cliente : ClienteRepository.obterLista()) {
-					%>
-					<tr>
-						<%
-						String id = String.valueOf(cliente.getId());
-						%>
-						<td><%=id%></td>
-						<td><%=cliente.getNome()%></td>
-						<td><%=cliente.getCpf()%></td>
-						<td><%=cliente.getTelefone()%></td>
-						<td>
-							<form action="/lista/cliente">
-								<button type="submit" value="<%=id%>" name="id">Excluir</button>
-							</form>
-						</td>
-					</tr>
-					<%
-					}
-					%>
+					<c:forEach var="cliente" items="${cliente.obterLista()}">
+						<tr>
+							<td>${cliente.getNome()}</td>
+							<td>${cliente.getCpf()}</td>
+							<td>${cliente.getTelefone()}</td>
+							<td>
+								<form action="/lista/cliente">
+									<button type="submit" value="${cliente.id}" name="id">Excluir</button>
+								</form>
+							</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		<div class="form-group">
 			<a href="/cadastro/cliente"><button class="btn btn-primary">Novo
-					Cliente</button></a> <a href="/"><button class="btn btn-primary">Página
-					inicial</button></a>
+					Cliente</button></a>
 		</div>
-		<%
-		} else {
-		%>
-		<h1>Acesso Negado</h1>
-		<a href="/acesso/funcionario">Autenticar Funcionário</a>
-		<%
-		}
-		%>
-
 	</div>
 </body>
 </html>

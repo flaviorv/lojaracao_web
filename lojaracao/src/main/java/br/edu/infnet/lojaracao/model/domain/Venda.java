@@ -2,37 +2,52 @@ package br.edu.infnet.lojaracao.model.domain;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
 public class Venda {
-	
-	private String data;
+	@Id
+	private Integer data;
 	private boolean entrega = false;
 	private String endereco;
-	private Cliente cliente;
-	private List<Racao> listaRacoes;
+//	private Cliente cliente;
+//	private List<Racao> listaRacoes;
 	
-	@Override
-	public String toString() {
-		String s1 = String.format("Data: %s",  data );
-		String s2 = String.format(";Clinte: %s", cliente.toString());
-		String s3;
-		if(entrega) {
-			s3 = String.format(";Entregar: %s", endereco);
-		}else {
-			s3 = String.format(";Produto retirado pelo cliente");
-		}
-		String s4 = String.format(";Quantidade de Rações: %d", listaRacoes.size());
+	public Venda() {
 		
-		return s1 + s2 + s3 + s4;
+	}
+	
+	public Venda(Integer data, boolean entrega, String endereco) {
+		this.data = data;
+		this.entrega = entrega;
+		this.endereco = endereco;
+//		this.cliente = cliente;
+//		this.listaRacoes = listaRacoes;
 	}
 
-	public String getData() {
+	@Override
+	public String toString() {
+		String s1 = String.format("Data: %s", data);
+//		String s2 = String.format(";Clinte: %s", cliente.toString());
+		String s3;
+		if (entrega) {
+			s3 = String.format(";Entregar: %s", endereco);
+		} else {
+			s3 = String.format(";Produto retirado pelo cliente");
+		}
+		String s4 = String.format(";Quantidade de Rações: %d");
+
+		return s1 + "s2" + s3 + s4;
+	}
+
+	public Integer getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Integer data) {
 		this.data = data;
 	}
-	
+
 	public boolean isEntrega() {
 		return entrega;
 	}
@@ -49,19 +64,19 @@ public class Venda {
 		this.endereco = endereco;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+//	public Cliente getCliente() {
+//		return cliente;
+//	}
+//
+//	public void setCliente(Cliente cliente) {
+//		this.cliente = cliente;
+//	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public List<Racao> getListaRacoes() {
-		return listaRacoes;
-	}
-
-	public void setListaRacoes(List<Racao> listaRacoes) {
-		this.listaRacoes = listaRacoes;
-	}
+//	public List<Racao> getListaRacoes() {
+//		return listaRacoes;
+//	}
+//
+//	public void setListaRacoes(List<Racao> listaRacoes) {
+//		this.listaRacoes = listaRacoes;
+//	}
 }

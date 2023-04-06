@@ -15,6 +15,7 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 	<div>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
+
 	<div class="container">
 		<form action="/cao/incluir" method="post">
 			<h1 class="form-group">Cadastre uma nova ração de cão</h1>
@@ -83,5 +84,7 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 			</div>
 		</form>
 	</div>
+
+
 </body>
 </html>

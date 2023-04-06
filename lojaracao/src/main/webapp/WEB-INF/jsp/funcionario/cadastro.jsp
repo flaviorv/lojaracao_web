@@ -17,13 +17,14 @@
 	<div class="container">
 		<form action="/funcionario/incluir" method="post">
 			<h1 class="form-group">Criar conta de funcionário</h1>
+			<h2>${status}</h2>
 			<div class="form-group">
 				<label for="nome">Nome:</label> <input type="text" name="nome"
-					value="Flavio" class="form-control" id="nome" required>
+					value="Flávio" class="form-control" id="nome" required>
 			</div>
 			<div class="form-group">
 				<label for="email">E-mail:</label> <input type="email" name="email"
-					value="flavio@infnet.com" class="form-control" id="email" required>
+					value="flavio@al.infnet.edu.com" class="form-control" id="email" required>
 			</div>
 			<div class="form-group">
 				<label for="senha">Senha:</label> <input type="password"

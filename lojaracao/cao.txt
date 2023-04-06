@@ -1,0 +1,3 @@
+Ração ShowDog;2785;33.33;false;true;Raças Pequenas
+Ração Foster;4098;45.89;true;false;Grande Porte
+Ração AniDog;984;13.87;false;false;Porte Médio

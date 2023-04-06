@@ -21,7 +21,9 @@ img {
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
 	<div class="container">
+		
 		<img alt="" src="/imagens/racaoVarotoIndex.png">
+		<h2>${status}</h2>
 	</div>
 </body>
 </html>

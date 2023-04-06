@@ -14,12 +14,13 @@
 	<div>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
+
 	<div class="container">
 		<form action="/cliente/incluir" method="post">
 			<h1 class="form-group">Cadastre um novo cliente</h1>
 			<div class="form-group">
 				<label for="nome">Nome:</label> <input type="text" name="nome"
-					value="Flavio" class="form-control" id="nome">
+					value="Adriano" class="form-control" id="nome">
 			</div>
 			<div class="form-group">
 				<label for="cpf">Cpf:</label> <input type="text" name="cpf"
@@ -35,5 +36,6 @@
 			</div>
 		</form>
 	</div>
+
 </body>
 </html>

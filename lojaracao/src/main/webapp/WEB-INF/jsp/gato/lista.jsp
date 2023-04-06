@@ -22,14 +22,14 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 	<div>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
-	<c:import url="/WEB-INF/jsp/menu.jsp" />
 	<div class="container">
 		<div class="form-group">
+
 			<h1>Lista de rações de gato</h1>
+			<h2>Total: <c:out value="${gato.obterLista().size()}"></c:out></h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th class="table-info">Id</th>
 						<th class="table-info">Nome</th>
 						<th class="table-info">Código</th>
 						<th class="table-info">Preço</th>
@@ -40,50 +40,32 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					for (Gato item : GatoRepository.obterLista()) {
-					%>
-					<tr>
-						<%
-						String id = String.valueOf(item.getId());
-						%>
-						<td><%=id%></td>
-						<td><%=item.getNome()%></td>
-						<td><%=item.getCodigo()%></td>
-						<td>R$<%=item.getPreco()%></td>
-						<td><%=item.isFilhotes()%></td>
-						<td><%=item.isCastrado()%></td>
-						<td><%=item.getSabor()%></td>
-						<td>
-							<form action="/lista/gato">
-								<button type="submit" value="<%=id%>" name="id">Excluir</button>
-							</form>
-						</td>
-					</tr>
-					<%
-					}
-					%>
+					<c:forEach var="gato" items="${gato.obterLista()}">
+						<tr>
+							<td>${gato.getNome()}</td>
+							<td>${gato.getCodigo()}</td>
+							<td>R$${gato.getPreco()}</td>
+							<td>${gato.isFilhotes()}</td>
+							<td>${gato.isCastrado()}</td>
+							<td>${gato.getSabor()}</td>
+							<td>
+								<form action="/lista/gato">
+									<button type="submit" value="${gato.getId()}" name="id">Excluir</button>
+								</form>
+							</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+
 		<div class="form-group">
-			<%
-			if (FuncionarioRepository.isFuncionarioLogado()) {
-			%>
+
 			<a href="/cadastro/gato"><button class="btn btn-primary">Nova
 					Ração</button></a>
-			<%
-			} else {
-			%>
-			<a href="/acesso/funcionario"><button class="btn btn-primary">Nova
-					Ração</button></a>
-			<%
-			}
-			%>
-			<a href="/"><button class="btn btn-primary">Página
-					inicial</button></a>
-
 		</div>
+
+
 	</div>
 </body>
 </html>

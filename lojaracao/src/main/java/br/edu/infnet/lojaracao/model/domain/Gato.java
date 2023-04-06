@@ -1,19 +1,37 @@
 package br.edu.infnet.lojaracao.model.domain;
 
+import javax.persistence.Entity;
+
 import br.edu.infnet.lojaracao.model.auxiliary.Constantes;
 
+@Entity
 public class Gato extends Racao {
 
 	private String sabor;
 	private boolean filhotes = false;
 	private boolean castrado = false;
 
-	public Gato(Integer id, String nome, int codigo, float preco, 
-			String sabor, boolean filhotes, boolean castrado) {
-		super(id, nome, codigo, preco);
+	public Gato() {
+
+	}
+
+	public Gato(String nome, int codigo, float preco, String sabor, boolean filhotes, boolean castrado) {
+		super(nome, codigo, preco);
 		this.sabor = sabor;
 		this.castrado = castrado;
 		this.filhotes = filhotes;
+	}
+
+	public void setSabor(String sabor) {
+		this.sabor = sabor;
+	}
+
+	public void setFilhotes(boolean filhotes) {
+		this.filhotes = filhotes;
+	}
+
+	public void setCastrado(boolean castrado) {
+		this.castrado = castrado;
 	}
 
 	public String getSabor() {
@@ -69,6 +87,5 @@ public class Gato extends Racao {
 
 		return sb.toString();
 	}
-
 
 }

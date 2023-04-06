@@ -9,52 +9,50 @@ import java.util.Arrays;
 
 public class ArquivoTeste {
 	public static void main(String[] args) {
-		
-		 
-		 try {
+
+		try {
 			String diretorio = "C:\\INFNET\\java\\java_web\\assessment\\src\\";
 			String arquivo = "lojaDeRacao.txt";
-			
-			FileReader fr = new FileReader(diretorio+arquivo);
+
+			FileReader fr = new FileReader(diretorio + arquivo);
 			BufferedReader br = new BufferedReader(fr);
-			
+
 			String linha = br.readLine();
 			String[] campos = null;
-			
+
 			int quantidade = 0;
-			
-			while(linha != null) {
+
+			while (linha != null) {
 				campos = linha.split(";");
-				
-				switch(campos[0].toUpperCase()) {
+
+				switch (campos[0].toUpperCase()) {
 				case "V":
-					System.out.println(escrever(diretorio, arquivo, campos[5].toString()+"\r\n", false));
+					System.out.println(escrever(diretorio, arquivo, campos[5].toString() + "\r\n", false));
 					break;
-				case "A","C","G":
+				case "A", "C", "G":
 					quantidade++;
 					break;
 				}
-				
+
 				System.out.println(Arrays.asList(campos));
 				linha = br.readLine();
 			}
-			
-			System.out.println(escrever(diretorio, arquivo, "Quantidade de objetos da classe mãe: " + quantidade, true));
-			
-			
+
+			System.out
+					.println(escrever(diretorio, arquivo, "Quantidade de objetos da classe mãe: " + quantidade, true));
+
 			br.close();
 			fr.close();
-			
-		 } catch (IOException e) {
+
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		 
-		 
+
 	}
-	
+
 	public static String escrever(String diretorio, String arquivo, String conteudo, boolean naoSobrescrever) {
 		String status = null;
-		
+
 		try {
 			FileWriter fw;
 			fw = new FileWriter(diretorio + "out_" + arquivo, naoSobrescrever);

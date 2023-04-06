@@ -22,13 +22,14 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 	<div>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
+
 	<div class="container">
 		<div class="form-group">
 			<h1>Lista de rações de cães</h1>
+			<h2>Total: <c:out value="${cao.obterLista().size()}"></c:out></h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th class="table-info">Id</th>
 						<th class="table-info">Nome</th>
 						<th class="table-info">Código</th>
 						<th class="table-info">Preço</th>
@@ -39,49 +40,33 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					for (Cao item : CaoRepository.obterLista()) {
-					%>
-					<tr>
-						<%
-						String id = String.valueOf(item.getId());
-						%>
-						<td><%=id%></td>
-						<td><%=item.getNome()%></td>
-						<td><%=item.getCodigo()%></td>
-						<td>R$<%=item.getPreco()%></td>
-						<td><%=item.isSemCorante()%></td>
-						<td><%=item.isFilhotes()%></td>
-						<td><%=item.getPorte()%></td>
-						<td>
-							<form action="/lista/cao">
-								<button type="submit" value="<%=id%>" name="id">Excluir</button>
-							</form>
-						</td>
-					</tr>
-					<%
-					}
-					%>
+					<c:forEach var="cao" items="${cao.obterLista()}">
+						<tr>
+							<td>${cao.getNome()}</td>
+							<td>${cao.getCodigo()}</td>
+							<td>${cao.getPreco()}</td>
+							<td>${cao.isSemCorante()}</td>
+							<td>${cao.isFilhotes()}</td>
+							<td>${cao.getPorte()}</td>
+							<td>
+								<form action="/lista/cao">
+									<button type="submit" value="${cao.id}" name="id">Excluir</button>
+								</form>
+							</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		<div class="form-group">
-			<%
-			if (FuncionarioRepository.isFuncionarioLogado()) {
-			%>
+
 			<a href="/cadastro/cao"><button class="btn btn-primary">Nova
 					Ração</button></a>
-			<%
-			} else {
-			%>
-			<a href="/acesso/funcionario"><button class="btn btn-primary">Nova
-					Ração</button></a>
-			<%
-			}
-			%>
-			<a href="/"><button class="btn btn-primary">Página
-					inicial</button></a>
+
 		</div>
 	</div>
+
+
+
 </body>
 </html>

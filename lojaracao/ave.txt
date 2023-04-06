@@ -1,0 +1,3 @@
+Ração de Ave Torneio;1233;21.00;Trinca-Ferro;Mamão;2
+Ração de Ave Canto Novo;2342;54.45;Coleiro;Banana;0.5
+Ração de Ave Belo Pássaro;43877;23.65;Canário;Maracujá;0.5

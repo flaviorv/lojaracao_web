@@ -1,0 +1,3 @@
+Funcionário Flávio;flavio@al.infnet.edu.com;123
+Funcionário Elza;elza@al.infnet.edu.com;123
+Funcionária Bianca;bianca@al.infnet.edu.com;123

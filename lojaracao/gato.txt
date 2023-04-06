@@ -1,0 +1,3 @@
+Ração Pitukats;0580;111.22;Peixe;true;false
+Ração GugaGato;0976;124.43;Carne;true;false
+Ração Whiskas;9523;132.32;Frutos do Mar;false;true

@@ -1,17 +1,30 @@
 package br.edu.infnet.lojaracao.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
 public abstract class Racao {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private int codigo;
 	private float preco;
+	
+	public Racao() {
+		
+	}
 
-	public Racao(Integer id, String nome, int codigo, float preco) {
-		this.id = id;
+	public Racao(String nome, int codigo, float preco) {
 		this.nome = nome;
 		this.codigo = codigo;
 		this.preco = preco;
-
+		
 	}
 
 	@Override
@@ -41,6 +54,18 @@ public abstract class Racao {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setPreco(float preco) {
+		this.preco = preco;
 	}
 
 	public void setId(Integer id) {
