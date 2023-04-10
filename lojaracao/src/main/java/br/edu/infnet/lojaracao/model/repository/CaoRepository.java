@@ -9,7 +9,7 @@ import br.edu.infnet.lojaracao.model.domain.Cao;
 
 @Repository
 public interface CaoRepository extends CrudRepository<Cao, Integer> {
-	@Query("from Cao c")
-	List<Cao> obterLista(Sort sort);
+	@Query("from Cao c where c.funcionario.id = :funcionarioId")
+	List<Cao> obterLista(Sort sort, Integer funcionarioId);
 
 }

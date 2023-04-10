@@ -27,7 +27,10 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 	<div class="container">
 		<div class="form-group">
 			<h1>Lista de rações de aves</h1>
-			<h2>Total: <c:out value="${ave.obterLista().size()}"></c:out></h2>
+			<h2>
+				Total:
+				<c:out value="${ave.obterLista().size()}"></c:out>
+			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -41,33 +44,46 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="ave" items="${ave.obterLista()}">
-
-						<tr>
-							<td>${ave.getNome()}</td>
-							<td>${ave.getCodigo()}</td>
-							<td>R$${ave.getPreco()}</td>
-							<td>${ave.getTipo()}</td>
-							<td>${ave.getAroma()}</td>
-							<td>${ave.getPeso()}</td>
-							<td>
-								<form action="/lista/ave">
-									<button type="submit" value="${ave.id}" name="id">Excluir</button>
-								</form>
-							</td>
-						</tr>
-					</c:forEach>
-
+					<c:if test="${funcionarioLogado.isAdmin()}">
+						<c:forEach var="ave" items="${ave.obterLista()}">
+							<tr>
+								<td>${ave.getNome()}</td>
+								<td>${ave.getCodigo()}</td>
+								<td>R$${ave.getPreco()}</td>
+								<td>${ave.getTipo()}</td>
+								<td>${ave.getAroma()}</td>
+								<td>${ave.getPeso()}</td>
+								<td>
+									<form action="/lista/ave">
+										<button type="submit" value="${ave.id}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${funcionarioLogado.isAdmin() eq false}">
+						<c:forEach var="ave" items="${ave.obterLista(funcionarioLogado)}">
+							<tr>
+								<td>${ave.getNome()}</td>
+								<td>${ave.getCodigo()}</td>
+								<td>R$${ave.getPreco()}</td>
+								<td>${ave.getTipo()}</td>
+								<td>${ave.getAroma()}</td>
+								<td>${ave.getPeso()}</td>
+								<td>
+									<form action="/lista/ave">
+										<button type="submit" value="${ave.id}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
 				</tbody>
 			</table>
-
 		</div>
 		<div class="form-group">
-
-			<a href="/cadastro/ave"><button 
-			class="btn btn-primary">Nova
+			<a href="/cadastro/ave"><button class="btn btn-primary">Nova
 					Ração</button></a>
-
 		</div>
 	</div>
 </body>

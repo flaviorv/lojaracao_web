@@ -1,5 +1,7 @@
 package br.edu.infnet.lojaracao.controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +33,8 @@ public class FuncionarioController {
 		funcionarioValido.setSenha(senha);
 		funcionarioValido = funcionarioService.autenticar(funcionarioValido);
 		if (funcionarioValido != null) {
-			model.addAttribute("funcionarioLogado", funcionarioValido.getNome());
+			model.addAttribute("funcionarioLogado", funcionarioValido);
 			model.addAttribute("status", "Funcionário Logado");
-			System.out.println("Funcionário Logado");
 			return "redirect:/";
 		}
 		model.addAttribute("status", "Dados Inválidos");
@@ -47,26 +48,39 @@ public class FuncionarioController {
 	}
 
 	@PostMapping(value = "/funcionario/incluir")
-	public String incluir(Model model, Funcionario novoFuncionario) {
+	public String incluir(Model model, Funcionario novoFuncionario, 
+			HttpSession session) {
 		
 		if (funcionarioService.autenticar(novoFuncionario) != null) {
 			System.out.println("Já Existe Funcionário Com Este Email");
 			model.addAttribute("status", "Já Existe Funcionário Com Este Email");
+			return "funcionario/cadastro";
 
 		} else {
 			funcionarioService.incluir(novoFuncionario);
 			System.out.println("Funcionário Cadastrado Com Sucesso");
 			model.addAttribute("status", "Funcionário Cadastrado Com Sucesso");
-		}
-		return "redirect:/acesso/funcionario";
+			return "redirect:/acesso/funcionario";
+		}		
+		
 	}
 
 	@GetMapping(value = "/funcionario/sair")
 	public String telaIndex(HttpSession session, SessionStatus status) {
 		status.setComplete();
-		session.removeAttribute("funcionario");
+		session.removeAttribute("funcionarioLogado");
 		session.removeAttribute("status");
 		return "redirect:/";
+	}
+	
+	@GetMapping(value = "/lista/funcionario")
+	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
+		System.out.println(idParam.toString());
+		model.addAttribute("funcionario", funcionarioService);
+		if (!idParam.isEmpty()) {
+			funcionarioService.excluir(Integer.parseInt(idParam.get().toString()));
+		}
+		return "funcionario/lista";
 	}
 
 }

@@ -84,7 +84,5 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 			</div>
 		</form>
 	</div>
-
-
 </body>
 </html>

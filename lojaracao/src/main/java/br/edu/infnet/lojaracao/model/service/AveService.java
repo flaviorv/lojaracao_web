@@ -27,6 +27,6 @@ public class AveService {
 	}
 
 	public Collection<Ave> obterLista(Funcionario funcionario) {
-		return aveRepository.obterLista(Sort.by(Direction.ASC, "tipo"));
+		return aveRepository.obterLista(Sort.by(Direction.ASC, "tipo"), funcionario.getId());
 	}
 }

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Cliente {
@@ -13,7 +15,11 @@ public class Cliente {
 	private String cpf;
 	private String nome;
 	private String telefone;
-
+	@ManyToOne
+	@JoinColumn(name = "idFuncionario")
+	private Funcionario funcionario;
+	
+	
 	public Cliente() {
 
 	}
@@ -66,6 +72,14 @@ public class Cliente {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 }

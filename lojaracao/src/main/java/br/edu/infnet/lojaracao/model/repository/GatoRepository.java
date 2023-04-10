@@ -9,7 +9,7 @@ import br.edu.infnet.lojaracao.model.domain.Gato;
 
 @Repository
 public interface GatoRepository extends CrudRepository<Gato, Integer>{
-	@Query("from Gato g")
-	List<Gato> obterLista(Sort sort);
+	@Query("from Gato g where g.funcionario.id = :funcionarioId")
+	List<Gato> obterLista(Sort sort, Integer funcionarioId);
 
 }

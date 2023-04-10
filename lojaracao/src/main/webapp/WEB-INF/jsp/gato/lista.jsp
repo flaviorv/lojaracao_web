@@ -26,7 +26,10 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 		<div class="form-group">
 
 			<h1>Lista de rações de gato</h1>
-			<h2>Total: <c:out value="${gato.obterLista().size()}"></c:out></h2>
+			<h2>
+				Total:
+				<c:out value="${gato.obterLista().size()}"></c:out>
+			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -40,32 +43,48 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="gato" items="${gato.obterLista()}">
-						<tr>
-							<td>${gato.getNome()}</td>
-							<td>${gato.getCodigo()}</td>
-							<td>R$${gato.getPreco()}</td>
-							<td>${gato.isFilhotes()}</td>
-							<td>${gato.isCastrado()}</td>
-							<td>${gato.getSabor()}</td>
-							<td>
-								<form action="/lista/gato">
-									<button type="submit" value="${gato.getId()}" name="id">Excluir</button>
-								</form>
-							</td>
-						</tr>
-					</c:forEach>
+					<c:if test="${funcionarioLogado.isAdmin()}">
+						<c:forEach var="gato" items="${gato.obterLista()}">
+							<tr>
+								<td>${gato.getNome()}</td>
+								<td>${gato.getCodigo()}</td>
+								<td>R$${gato.getPreco()}</td>
+								<td>${gato.isFilhotes()}</td>
+								<td>${gato.isCastrado()}</td>
+								<td>${gato.getSabor()}</td>
+								<td>
+									<form action="/lista/gato">
+										<button type="submit" value="${gato.getId()}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${funcionarioLogado.isAdmin() eq false}">
+						<c:forEach var="gato" items="${gato.obterLista(funcionarioLogado)}">
+							<tr>
+								<td>${gato.getNome()}</td>
+								<td>${gato.getCodigo()}</td>
+								<td>R$${gato.getPreco()}</td>
+								<td>${gato.isFilhotes()}</td>
+								<td>${gato.isCastrado()}</td>
+								<td>${gato.getSabor()}</td>
+								<td>
+									<form action="/lista/gato">
+										<button type="submit" value="${gato.getId()}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
 				</tbody>
 			</table>
 		</div>
-
 		<div class="form-group">
 
 			<a href="/cadastro/gato"><button class="btn btn-primary">Nova
 					Ração</button></a>
 		</div>
-
-
 	</div>
 </body>
 </html>

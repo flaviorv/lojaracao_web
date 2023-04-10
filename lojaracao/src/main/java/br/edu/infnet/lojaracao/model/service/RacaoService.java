@@ -28,6 +28,6 @@ public class RacaoService {
 	}
 
 	public Collection<Racao> obterLista(Funcionario funcionario) {
-		return racaoRepository.obterLista(Sort.by(Direction.ASC, "preco"));
+		return racaoRepository.obterLista(Sort.by(Direction.ASC, "preco"), funcionario.getId());
 	}
 }

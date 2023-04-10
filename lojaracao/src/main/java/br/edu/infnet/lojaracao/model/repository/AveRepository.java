@@ -9,7 +9,7 @@ import br.edu.infnet.lojaracao.model.domain.Ave;
 
 @Repository
 public interface AveRepository extends CrudRepository<Ave, Integer> {
-	@Query("from Ave a")
-	List<Ave> obterLista(Sort sort);
+	@Query("from Ave a where a.funcionario.id = :funcionarioId")
+	List<Ave> obterLista(Sort sort, Integer funcionarioId);
 	
 }

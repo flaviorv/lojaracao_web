@@ -9,6 +9,6 @@ import br.edu.infnet.lojaracao.model.domain.Venda;
 
 @Repository
 public interface VendaRepository extends CrudRepository<Venda, Integer>{
-	@Query("from Venda v")
-	List<Venda> obterLista(Sort sort);
+	@Query("from Venda v where v.funcionario.id = :funcionarioId")
+	List<Venda> obterLista(Sort sort, Integer funcionarioId);
 }

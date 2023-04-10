@@ -27,7 +27,7 @@ public class ClienteService {
 	}
 	
 	public Collection<Cliente> obterLista(Funcionario funcionario){
-		return clienteRepository.obterLista( Sort.by(Direction.ASC, "cpf"));
+		return (Collection<Cliente>) clienteRepository.obterLista( Sort.by(Direction.ASC, "cpf"), funcionario.getId());
 	}
 
 }

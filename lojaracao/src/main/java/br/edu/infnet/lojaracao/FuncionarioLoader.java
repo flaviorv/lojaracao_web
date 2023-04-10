@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.lojaracao.model.domain.Funcionario;
@@ -14,6 +15,7 @@ import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.service.FuncionarioService;
 import br.edu.infnet.lojaracao.model.service.FuncionarioService;
 
+@Order(1)
 @Component
 public class FuncionarioLoader implements ApplicationRunner {
 	@Autowired
@@ -41,6 +43,7 @@ public class FuncionarioLoader implements ApplicationRunner {
 					campos = linha.split(";");
 
 					Funcionario funcionario = new Funcionario(campos[0], campos[1], campos[2]);
+					funcionario.setAdmin(true);
 					funcionarioService.incluir(funcionario);
 					System.out.println(funcionario + " incluido");
 					linha = br.readLine();

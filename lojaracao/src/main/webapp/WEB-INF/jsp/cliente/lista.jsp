@@ -25,7 +25,6 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
 	<div class="container">
-
 		<div class="form-group">
 			<h1>Lista de clientes</h1>
 			<h2>
@@ -42,18 +41,35 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="cliente" items="${cliente.obterLista()}">
-						<tr>
-							<td>${cliente.getNome()}</td>
-							<td>${cliente.getCpf()}</td>
-							<td>${cliente.getTelefone()}</td>
-							<td>
-								<form action="/lista/cliente">
-									<button type="submit" value="${cliente.id}" name="id">Excluir</button>
-								</form>
-							</td>
-						</tr>
-					</c:forEach>
+					<c:if test="${funcionarioLogado.isAdmin()}">
+						<c:forEach var="cliente" items="${cliente.obterLista()}">
+							<tr>
+								<td>${cliente.getNome()}</td>
+								<td>${cliente.getCpf()}</td>
+								<td>${cliente.getTelefone()}</td>
+								<td>
+									<form action="/lista/cliente">
+										<button type="submit" value="${cliente.id}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${funcionarioLogado.isAdmin() eq false}">
+						<c:forEach var="cliente"
+							items="${cliente.obterLista(funcionarioLogado)}">
+							<tr>
+								<td>${cliente.getNome()}</td>
+								<td>${cliente.getCpf()}</td>
+								<td>${cliente.getTelefone()}</td>
+								<td>
+									<form action="/lista/cliente">
+										<button type="submit" value="${cliente.id}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
 				</tbody>
 			</table>
 		</div>

@@ -1,5 +1,4 @@
-<%@ page language="java"
-	import="br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
+<%@ page language="java" import="br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>

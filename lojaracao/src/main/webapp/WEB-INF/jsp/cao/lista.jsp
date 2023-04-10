@@ -22,11 +22,13 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 	<div>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
-
 	<div class="container">
 		<div class="form-group">
 			<h1>Lista de rações de cães</h1>
-			<h2>Total: <c:out value="${cao.obterLista().size()}"></c:out></h2>
+			<h2>
+				Total:
+				<c:out value="${cao.obterLista().size()}"></c:out>
+			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -40,33 +42,47 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="cao" items="${cao.obterLista()}">
-						<tr>
-							<td>${cao.getNome()}</td>
-							<td>${cao.getCodigo()}</td>
-							<td>${cao.getPreco()}</td>
-							<td>${cao.isSemCorante()}</td>
-							<td>${cao.isFilhotes()}</td>
-							<td>${cao.getPorte()}</td>
-							<td>
-								<form action="/lista/cao">
-									<button type="submit" value="${cao.id}" name="id">Excluir</button>
-								</form>
-							</td>
-						</tr>
-					</c:forEach>
+					<c:if test="${funcionarioLogado.isAdmin()}">
+						<c:forEach var="cao" items="${cao.obterLista()}">
+							<tr>
+								<td>${cao.getNome()}</td>
+								<td>${cao.getCodigo()}</td>
+								<td>${cao.getPreco()}</td>
+								<td>${cao.isSemCorante()}</td>
+								<td>${cao.isFilhotes()}</td>
+								<td>${cao.getPorte()}</td>
+								<td>
+									<form action="/lista/cao">
+										<button type="submit" value="${cao.id}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${funcionarioLogado.isAdmin() eq false}">
+						<c:forEach var="cao" items="${cao.obterLista(funcionarioLogado)}">
+							<tr>
+								<td>${cao.getNome()}</td>
+								<td>${cao.getCodigo()}</td>
+								<td>${cao.getPreco()}</td>
+								<td>${cao.isSemCorante()}</td>
+								<td>${cao.isFilhotes()}</td>
+								<td>${cao.getPorte()}</td>
+								<td>
+									<form action="/lista/cao">
+										<button type="submit" value="${cao.id}" name="id">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
 				</tbody>
 			</table>
 		</div>
 		<div class="form-group">
-
 			<a href="/cadastro/cao"><button class="btn btn-primary">Nova
 					Ração</button></a>
-
 		</div>
 	</div>
-
-
-
 </body>
 </html>

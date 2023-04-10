@@ -7,11 +7,13 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.domain.Gato;
 import br.edu.infnet.lojaracao.model.service.GatoService;
-
+@Order(5)
 @Component
 public class GatoLoader implements ApplicationRunner  {
 
@@ -40,6 +42,9 @@ public class GatoLoader implements ApplicationRunner  {
 					Gato gato = new Gato(campos[0], Integer.parseInt(campos[1]), 
 							Float.parseFloat(campos[2]), campos[3],
 							Boolean.parseBoolean(campos[4]), Boolean.parseBoolean(campos[5]));
+					Funcionario funcionario = new Funcionario();
+					funcionario.setId(1);
+					gato.setFuncionario(funcionario);
 					gatoService.incluir(gato);
 					System.out.println(gato + " incluido");
 					linha = br.readLine();

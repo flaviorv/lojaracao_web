@@ -19,8 +19,8 @@ public class VendaService {
 		return vendaRepository.save(venda);
 	}
 
-	public void excluir(Integer data) {
-		vendaRepository.deleteById(data);
+	public void excluir(Integer id) {
+		vendaRepository.deleteById(id);
 	}
 
 	public Collection<Venda> obterLista() {
@@ -28,6 +28,6 @@ public class VendaService {
 	}
 
 	public Collection<Venda> obterLista(Funcionario funcionario) {
-		return vendaRepository.obterLista(Sort.by(Direction.ASC, "data"));
+		return vendaRepository.obterLista(Sort.by(Direction.ASC, "data"), funcionario.getId());
 	}
 }

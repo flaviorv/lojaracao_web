@@ -20,27 +20,7 @@ public class Ave extends Racao {
 		this.peso = peso;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public String getAroma() {
-		return aroma;
-	}
-
-	public float getPeso() {
-		return peso;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	public void setAroma(String aroma) {
-		this.aroma = aroma;
-	}
-	public void setPeso(float peso) {
-		this.peso = peso;
-	}
+	
 	@Override
 	public float calcularPrecoFinal(float preco) {
 		if (tipo == Constantes.TIPO1 ) {
@@ -69,6 +49,28 @@ public class Ave extends Racao {
 		sb.append(" - Código: " + super.getCodigo());
 
 		return sb.toString();
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public String getAroma() {
+		return aroma;
+	}
+
+	public float getPeso() {
+		return peso;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	public void setAroma(String aroma) {
+		this.aroma = aroma;
+	}
+	public void setPeso(float peso) {
+		this.peso = peso;
 	}
 
 }

@@ -1,7 +1,8 @@
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
 <%@ page language="java"
-	import="br.edu.infnet.lojaracao.model.repository.RacaoRepository, 
-br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
-	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	import="br.edu.infnet.lojaracao.model.repository.FuncionarioRepository, 
+br.edu.infnet.lojaracao.model.domain.Funcionario" 
+contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -24,47 +25,41 @@ br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.reposi
 	</div>
 	<div class="container">
 		<div class="form-group">
-			<h1>Listagem de todas as rações</h1>
+			<h1>Lista de funcionarios</h1>
 			<h2>
 				Total:
-				<c:out value="${racao.obterLista().size()}"></c:out>
+				<c:out value="${funcionario.obterLista().size()}"></c:out>
 			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th class="table-info">Nome</th>
-						<th class="table-info">Código</th>
-						<th class="table-info">Preço</th>
+						<th class="table-info">Email</th>
+						<th class="table-info">Admin</th>
+						<th class="table-info"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:if test="${funcionarioLogado.isAdmin()}">
-						<c:forEach var="racao" items="${racao.obterLista()}">
-
+						<c:forEach var="funcionario" items="${funcionario.obterLista()}">
 							<tr>
-								<td>${racao.getNome()}</td>
-								<td>${racao.getCodigo()}</td>
-								<td>${racao.getPreco()}</td>
+								<td>${funcionario.getNome()}</td>
+								<td>${funcionario.getEmail()}</td>
+								<td>${funcionario.isAdmin()}</td>
+								<td>
+									<form action="/lista/funcionario">
+										<button type="submit" value="${funcionario.id}" name="id">Excluir</button>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</c:if>
-					<c:if test="${funcionarioLogado.isAdmin() eq false}">
-						<c:forEach var="racao"
-							items="${racao.obterLista(funcionarioLogado)}">
-							<tr>
-								<td>${racao.getNome()}</td>
-								<td>${racao.getCodigo()}</td>
-								<td>${racao.getPreco()}</td>
-							</tr>
-						</c:forEach>
-					</c:if>
-
 				</tbody>
 			</table>
-			<div class="form-group">
-				<a href="/"><button class="btn btn-primary">Página
-						inicial</button></a>
-			</div>
+		</div>
+		<div class="form-group">
+			<a href="/cadastro/funcionario"><button class="btn btn-primary">Novo
+					Funcionario</button></a>
 		</div>
 	</div>
 </body>

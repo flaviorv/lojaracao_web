@@ -7,11 +7,14 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.lojaracao.model.domain.Ave;
+import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.service.AveService;
 
+@Order(3)
 @Component
 public class AveLoader implements ApplicationRunner {
 	@Autowired
@@ -37,9 +40,11 @@ public class AveLoader implements ApplicationRunner {
 				while (linha != null) {
 					campos = linha.split(";");
 
-					Ave ave = new Ave(campos[0], Integer.parseInt(campos[1]), 
-							Float.parseFloat(campos[2]), campos[3],
+					Ave ave = new Ave(campos[0], Integer.parseInt(campos[1]), Float.parseFloat(campos[2]), campos[3],
 							campos[4], Float.parseFloat(campos[5]));
+					Funcionario funcionario = new Funcionario();
+					funcionario.setId(1);
+					ave.setFuncionario(funcionario);
 					aveService.incluir(ave);
 					System.out.println(ave + " incluido");
 					linha = br.readLine();

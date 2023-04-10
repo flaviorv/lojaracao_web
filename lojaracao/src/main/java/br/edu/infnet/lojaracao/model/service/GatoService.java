@@ -28,6 +28,6 @@ public class GatoService {
 	}
 
 	public Collection<Gato> obterLista(Funcionario funcionario) {
-		return gatoRepository.obterLista(Sort.by(Direction.ASC, "sabor"));
+		return gatoRepository.obterLista(Sort.by(Direction.ASC, "sabor"), funcionario.getId());
 	}
 }

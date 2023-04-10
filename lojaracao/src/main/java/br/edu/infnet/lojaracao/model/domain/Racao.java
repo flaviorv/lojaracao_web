@@ -6,8 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Racao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +18,11 @@ public abstract class Racao {
 	private String nome;
 	private int codigo;
 	private float preco;
+	@ManyToOne
+	@JoinColumn(name = "idFuncionario")
+	private Funcionario funcionario;
 	
+
 	public Racao() {
 		
 	}
@@ -70,6 +77,14 @@ public abstract class Racao {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 }

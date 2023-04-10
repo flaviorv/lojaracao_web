@@ -22,25 +22,34 @@
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
 	<div class="container">
-		<h1>Acesso</h1>
-		<h2>${status}</h2>
-		<form action="/funcionario/validar" method="post">
+		<c:if test="${not empty funcionarioLogado}">
+			<h2>${status}</h2>
 			<div class="form-group">
-				<label for="email">Email:</label> <input type="text"
-					class="form-control" id="email" placeholder="Insira seu email"
-					name="email" value="flavio@al.infnet.edu.com">
+				<a href="/cadastro/funcionario"><button class="btn btn-primary">Novo
+						Funcionario</button></a>
 			</div>
+		</c:if>
+		<c:if test="${empty funcionarioLogado}">
+			<h1>Acesso</h1>
+			<h2>${status}</h2>
+			<form action="/funcionario/validar" method="post">
+				<div class="form-group">
+					<label for="email">Email:</label> <input type="text"
+						class="form-control" id="email" placeholder="Insira seu email"
+						name="email" value="flavio@al.infnet.edu.com">
+				</div>
+				<div class="form-group">
+					<label for="senha">Senha:</label> <input type="password"
+						class="form-control" id="senha" placeholder="Insira sua senha"
+						name="senha" value="123">
+				</div>
+				<button type="submit" class="btn btn-primary">Acessar Conta</button>
+			</form>
 			<div class="form-group">
-				<label for="senha">Senha:</label> <input type="password"
-					class="form-control" id="senha" placeholder="Insira sua senha"
-					name="senha" value="123">
+				<a href="/cadastro/funcionario"><button class="btn btn-primary">Novo
+						Funcionario</button></a>
 			</div>
-			<button type="submit" class="btn btn-primary">Acessar Conta</button>
-		</form>
-		<div class="form-group">
-			<a href="/cadastro/funcionario"><button class="btn btn-primary">Novo
-					Funcionario</button></a>
-		</div>
+		</c:if>
 	</div>
 </body>
 </html>
