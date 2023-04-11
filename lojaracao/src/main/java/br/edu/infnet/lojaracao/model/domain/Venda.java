@@ -53,7 +53,7 @@ public class Venda {
 		}
 		String s4 = String.format(";Quantidade de Rações: %d");
 
-		return s1 + "s2" + s3 + s4;
+		return s1 + s2 + s3 + s4;
 	}
 
 	public String getData() {
@@ -104,11 +104,11 @@ public class Venda {
 		this.cliente = cliente;
 	}
 
-	public List<Racao> getListaRacoes() {
+	public List<Racao> getRacoes() {
 		return racoes;
 	}
 
-	public void setListaRacoes(List<Racao> listaRacoes) {
+	public void setRacoes(List<Racao> listaRacoes) {
 		this.racoes = listaRacoes;
 	}
 }

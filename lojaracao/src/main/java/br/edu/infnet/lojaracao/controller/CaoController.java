@@ -1,11 +1,8 @@
 package br.edu.infnet.lojaracao.controller;
 
 import java.util.Optional;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +37,6 @@ public class CaoController {
 
 	@GetMapping(value = "/lista/cao")
 	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
-		System.out.println("Tentativa de exclusão pelo id: " + idParam.toString());
 		model.addAttribute("cao", caoService);
 		if (!idParam.isEmpty()) {
 			caoService.excluir(Integer.parseInt(idParam.get().toString()));

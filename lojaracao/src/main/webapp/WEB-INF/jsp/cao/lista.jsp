@@ -27,7 +27,12 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 			<h1>Lista de rações de cães</h1>
 			<h2>
 				Total:
-				<c:out value="${cao.obterLista().size()}"></c:out>
+				<c:if test="${funcionarioLogado.isAdmin()}">
+					<c:out value="${cao.obterLista().size()}"></c:out>
+				</c:if>
+				<c:if test="${funcionarioLogado.isAdmin() eq false}">
+					<c:out value="${cao.obterLista(funcionarioLogado).size()}"></c:out>
+				</c:if>
 			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>

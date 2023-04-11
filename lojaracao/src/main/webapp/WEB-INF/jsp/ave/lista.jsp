@@ -29,7 +29,12 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 			<h1>Lista de rações de aves</h1>
 			<h2>
 				Total:
-				<c:out value="${ave.obterLista().size()}"></c:out>
+				<c:if test="${funcionarioLogado.isAdmin()}">
+					<c:out value="${ave.obterLista().size()}"></c:out>
+				</c:if>
+				<c:if test="${funcionarioLogado.isAdmin() eq false}">
+					<c:out value="${ave.obterLista(funcionarioLogado).size()}"></c:out>
+				</c:if>
 			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>

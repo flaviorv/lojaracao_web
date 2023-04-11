@@ -27,7 +27,12 @@ br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.reposi
 			<h1>Listagem de todas as rações</h1>
 			<h2>
 				Total:
-				<c:out value="${racao.obterLista().size()}"></c:out>
+				<c:if test="${funcionarioLogado.isAdmin()}">
+					<c:out value="${racao.obterLista().size()}"></c:out>
+				</c:if>
+				<c:if test="${funcionarioLogado.isAdmin() eq false}">
+					<c:out value="${racao.obterLista(funcionarioLogado).size()}"></c:out>
+				</c:if>
 			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>

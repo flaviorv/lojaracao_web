@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import br.edu.infnet.lojaracao.model.domain.Ave;
 import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.service.AveService;
 
 @Controller
-@SessionAttributes()
 public class AveController {
 	@Autowired
 	AveService aveService;
@@ -40,7 +38,6 @@ public class AveController {
 
 	@GetMapping(value = "/lista/ave")
 	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
-		System.out.println("Tentativa de exclusão pelo id: " + idParam.toString());
 		model.addAttribute("ave", aveService);
 		if (!idParam.isEmpty()) {
 			aveService.excluir(Integer.parseInt(idParam.get().toString()));

@@ -41,7 +41,6 @@ public class GatoController {
 
 	@GetMapping(value = "/lista/gato")
 	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
-		System.out.println("Tentativa de exclusão pelo id: " + idParam.toString());
 		model.addAttribute("gato", gatoService);
 		if (!idParam.isEmpty()) {
 			gatoService.excluir(Integer.parseInt(idParam.get().toString()));

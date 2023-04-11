@@ -29,7 +29,12 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 			<h1>Lista de clientes</h1>
 			<h2>
 				Total:
-				<c:out value="${cliente.obterLista().size()}"></c:out>
+				<c:if test="${funcionarioLogado.isAdmin()}">
+					<c:out value="${cliente.obterLista().size()}"></c:out>
+				</c:if>
+				<c:if test="${funcionarioLogado.isAdmin() eq false}">
+					<c:out value="${cliente.obterLista(funcionarioLogado).size()}"></c:out>
+				</c:if>
 			</h2>
 			<table class="table table-striped table-bordered">
 				<thead>

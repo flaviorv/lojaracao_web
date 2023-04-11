@@ -39,10 +39,13 @@ public class ClienteController {
 
 	@GetMapping(value = "/lista/cliente")
 	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
-		System.out.println(idParam.toString());
 		model.addAttribute("cliente", clienteService);
 		if (!idParam.isEmpty()) {
-			clienteService.excluir(Integer.parseInt(idParam.get().toString()));
+			try {
+				clienteService.excluir(Integer.parseInt(idParam.get().toString()));
+			} catch (Exception e) {
+				return "redirect:/lista/venda";
+			}
 		}
 		return "cliente/lista";
 	}

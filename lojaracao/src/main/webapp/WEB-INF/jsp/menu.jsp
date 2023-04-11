@@ -1,8 +1,8 @@
 <%@page import="ch.qos.logback.core.net.SyslogOutputStream"%>
 <%@page
 	import="br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"%>
-<%@page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <style>
@@ -42,9 +42,9 @@ li a:hover {
 	<div>
 
 		<ul>
-			<li><a href="/">Início</a></li>
+			<li><a href="/">InÃ­cio</a></li>
 			<c:if test="${empty funcionarioLogado}">
-				<li><span>RAÇÕES VAROTO - Nutrindo com qualidade!</span></li>
+				<li><span>RAÃ‡Ã•ES VAROTO - Nutrindo com qualidade!</span></li>
 				<li><a href="/acesso/funcionario">Acessar Conta</a><a
 					href="/cadastro/funcionario">Criar Conta</a></li>
 			</c:if>
@@ -58,9 +58,9 @@ li a:hover {
 			<ul class="conteudoJunto">
 				<li>Cadastrar:</li>
 				<li><a href="/cadastro/cliente">Cliente</a></li>
-				<li><a href="/cadastro/ave">Ração de Ave</a></li>
-				<li><a href="/cadastro/cao">Ração de Cão</a></li>
-				<li><a href="/cadastro/gato">Ração de Gato</a></li>
+				<li><a href="/cadastro/ave">RaÃ§Ã£o de Ave</a></li>
+				<li><a href="/cadastro/cao">RaÃ§Ã£o de CÃ£o</a></li>
+				<li><a href="/cadastro/gato">RaÃ§Ã£o de Gato</a></li>
 				<li><a href="/cadastro/venda">Venda</a></li>
 				<c:if test="${funcionarioLogado.isAdmin()}">
 					<li><a href="/cadastro/funcionario">Funcionario</a></li>
@@ -69,10 +69,10 @@ li a:hover {
 			<ul class="conteudoJunto">
 				<li>Listar:</li>
 				<li><a href="/lista/cliente">Clientes</a></li>
-				<li><a href="/lista/racao">Todas as Rações</a></li>
-				<li><a href="/lista/ave">Rações de Ave</a></li>
-				<li><a href="/lista/cao">Rações de Cachorro</a></li>
-				<li><a href="/lista/gato">Rações de Gato</a></li>
+				<li><a href="/lista/racao">Todas as RaÃ§Ãµes</a></li>
+				<li><a href="/lista/ave">RaÃ§Ãµes de Ave</a></li>
+				<li><a href="/lista/cao">RaÃ§Ãµes de Cachorro</a></li>
+				<li><a href="/lista/gato">RaÃ§Ãµes de Gato</a></li>
 				<li><a href="/lista/venda">Vendas</a></li>
 				<c:if test="${funcionarioLogado.isAdmin()}">
 					<li><a href="/lista/funcionario">Funcionarios</a></li>

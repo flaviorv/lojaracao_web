@@ -27,6 +27,6 @@ public class CaoService {
 	}
 
 	public Collection<Cao> obterLista(Funcionario funcionario) {
-		return caoRepository.obterLista(Sort.by(Direction.ASC, "tipo"), funcionario.getId());
+		return caoRepository.obterLista(Sort.by(Direction.ASC, "porte"), funcionario.getId());
 	}
 }
