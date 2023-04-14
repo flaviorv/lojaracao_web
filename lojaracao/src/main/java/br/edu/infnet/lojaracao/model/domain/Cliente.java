@@ -1,11 +1,13 @@
 package br.edu.infnet.lojaracao.model.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente {
@@ -18,7 +20,9 @@ public class Cliente {
 	@ManyToOne
 	@JoinColumn(name = "idFuncionario")
 	private Funcionario funcionario;
-	
+	@OneToOne(cascade = CascadeType.ALL) 
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
 	
 	public Cliente() {
 
@@ -38,6 +42,8 @@ public class Cliente {
 		sb.append(cpf);
 		sb.append(";");
 		sb.append(telefone);
+		sb.append(";");
+		sb.append(endereco);
 
 		return sb.toString();
 	}
@@ -82,4 +88,11 @@ public class Cliente {
 		this.funcionario = funcionario;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 }

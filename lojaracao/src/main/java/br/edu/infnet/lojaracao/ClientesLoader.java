@@ -11,12 +11,16 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.lojaracao.model.domain.Cliente;
 import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.service.ClienteService;
+import br.edu.infnet.lojaracao.model.service.EnderecoService;
 
 @Order(2)
 @Component
 public class ClientesLoader implements ApplicationRunner {
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private EnderecoService enderecoService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -26,6 +30,8 @@ public class ClientesLoader implements ApplicationRunner {
 			String arquivo = "clientes.txt";
 
 			try {
+				
+				System.out.println("Cliente Loader iniciado.");
 
 				FileReader fr = new FileReader(arquivo);
 				BufferedReader br = new BufferedReader(fr);
@@ -41,6 +47,7 @@ public class ClientesLoader implements ApplicationRunner {
 					Funcionario funcionario = new Funcionario();
 					funcionario.setId(1);
 					cliente.setFuncionario(funcionario);
+					cliente.setEndereco(enderecoService.obterEndereco("36684020"));
 					clienteService.incluir(cliente);
 					System.out.println(cliente + "incluido");
 					linha = br.readLine();

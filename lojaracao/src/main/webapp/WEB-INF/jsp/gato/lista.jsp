@@ -35,6 +35,7 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 					<c:out value="${gato.obterLista(funcionarioLogado).size()}"></c:out>
 				</c:if>
 			</h2>
+			<h3>${statusRacao}</h3>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>

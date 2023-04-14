@@ -34,6 +34,7 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 					<c:out value="${cao.obterLista(funcionarioLogado).size()}"></c:out>
 				</c:if>
 			</h2>
+				<h3>${statusRacao}</h3>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>

@@ -39,8 +39,13 @@ public class CaoController {
 	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
 		model.addAttribute("cao", caoService);
 		if (!idParam.isEmpty()) {
-			caoService.excluir(Integer.parseInt(idParam.get().toString()));
-		}
+			try {
+				caoService.excluir(Integer.parseInt(idParam.get().toString()));
+			} catch (Exception e) {
+				model.addAttribute("statusRacao",
+						"Não é possível excluir essa ração. " + "Pode ser que haja dados da ração em vendas. "
+								+ "Se for o caso, exclua os dados da venda antes de excluir a ração.");
+			}	}
 		return "cao/lista";
 	}
 }

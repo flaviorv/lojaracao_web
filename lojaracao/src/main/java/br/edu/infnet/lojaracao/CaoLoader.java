@@ -27,6 +27,7 @@ public class CaoLoader implements ApplicationRunner  {
 			String arquivo = "cao.txt";
 
 			try {
+				System.out.println("Cao Loader iniciado.");
 
 				FileReader fr = new FileReader(arquivo);
 				BufferedReader br = new BufferedReader(fr);

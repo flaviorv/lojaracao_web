@@ -55,8 +55,11 @@
 									<td>Não</td>
 								</c:if>
 								<td>${venda.getEndereco()}</td>
-								<td>${venda.getCliente()}</td>
-								<td>${venda.getRacoes()}</td>
+								<td><p>${venda.getCliente().getNome()}</p>
+									<p>${venda.getCliente().getTelefone()}</p></td>
+								<td><c:forEach var="v" items="${venda.getRacoes()}">
+										<p>${v.getNome()} - R$${v.getPreco()}</p>
+									</c:forEach></td>
 								<td>
 									<form action="/lista/venda">
 										<button type="submit" value="${venda.id}" name="id">Excluir</button>
@@ -77,8 +80,12 @@
 									<td>Não</td>
 								</c:if>
 								<td>${venda.getEndereco()}</td>
-								<td>${venda.getCliente()}</td>
-								<td>${venda.getRacoes()}</td>
+								<td><p>${venda.getCliente().getNome()}</p>
+									<p>${venda.getCliente().getTelefone()}</p></td>
+								<td><c:forEach var="v" items="${venda.getRacoes()}">
+										<p>${v.getNome()} - R$${v.getPreco()}</p>
+									</c:forEach></td>
+
 								<td>
 									<form action="/lista/venda">
 										<button type="submit" value="${venda.id}" name="id">Excluir</button>

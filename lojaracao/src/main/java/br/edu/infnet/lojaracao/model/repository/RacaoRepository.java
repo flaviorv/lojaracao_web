@@ -12,5 +12,7 @@ import br.edu.infnet.lojaracao.model.domain.Racao;
 public interface RacaoRepository extends CrudRepository<Racao, Integer> {
 	@Query("from Racao r where r.funcionario.id = :funcionarioId")
 	List<Racao> obterLista(Sort sort, Integer funcionarioId);
-
+	
+	@Query("from Racao r where r.id = :racaoId")
+	Racao obterRacao( Integer racaoId);
 }

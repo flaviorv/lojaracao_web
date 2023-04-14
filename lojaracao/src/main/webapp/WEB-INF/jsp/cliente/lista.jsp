@@ -36,12 +36,14 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 					<c:out value="${cliente.obterLista(funcionarioLogado).size()}"></c:out>
 				</c:if>
 			</h2>
+			<h3>${statusCliente}</h3>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th class="table-info">Nome</th>
 						<th class="table-info">Cpf</th>
 						<th class="table-info">Telefone</th>
+						<th class="table-info">Uf</th>
 						<th class="table-info"></th>
 					</tr>
 				</thead>
@@ -52,6 +54,7 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 								<td>${cliente.getNome()}</td>
 								<td>${cliente.getCpf()}</td>
 								<td>${cliente.getTelefone()}</td>
+								<td>${cliente.getEndereco().getUf()}</td>
 								<td>
 									<form action="/lista/cliente">
 										<button type="submit" value="${cliente.id}" name="id">Excluir</button>
@@ -67,6 +70,8 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 								<td>${cliente.getNome()}</td>
 								<td>${cliente.getCpf()}</td>
 								<td>${cliente.getTelefone()}</td>
+								<td>${cliente.getEndereco().getUf()}</td>
+
 								<td>
 									<form action="/lista/cliente">
 										<button type="submit" value="${cliente.id}" name="id">Excluir</button>

@@ -40,7 +40,13 @@ public class AveController {
 	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
 		model.addAttribute("ave", aveService);
 		if (!idParam.isEmpty()) {
-			aveService.excluir(Integer.parseInt(idParam.get().toString()));
+			try {
+				aveService.excluir(Integer.parseInt(idParam.get().toString()));
+			} catch (Exception e) {
+				model.addAttribute("statusRacao",
+						"Não é possível excluir essa ração. " + "Pode ser que haja dados da ração em vendas. "
+								+ "Se for o caso, exclua os dados da venda antes de excluir a ração.");
+			}
 		}
 		return "ave/lista";
 	}

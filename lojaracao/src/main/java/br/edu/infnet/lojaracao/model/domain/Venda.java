@@ -51,9 +51,8 @@ public class Venda {
 		} else {
 			s3 = String.format(";Produto retirado pelo cliente");
 		}
-		String s4 = String.format(";Quantidade de Rações: %d");
 
-		return s1 + s2 + s3 + s4;
+		return s1 + s2 + s3 ;
 	}
 
 	public String getData() {

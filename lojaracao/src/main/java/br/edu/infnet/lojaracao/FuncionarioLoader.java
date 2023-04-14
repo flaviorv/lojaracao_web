@@ -31,6 +31,7 @@ public class FuncionarioLoader implements ApplicationRunner {
 
 			try {
 
+				System.out.println("Funcionario Loader iniciado.");
 				FileReader fr = new FileReader(arquivo);
 				BufferedReader br = new BufferedReader(fr);
 

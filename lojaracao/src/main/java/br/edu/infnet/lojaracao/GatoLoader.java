@@ -28,7 +28,7 @@ public class GatoLoader implements ApplicationRunner  {
 			String arquivo = "gato.txt";
 
 			try {
-
+				System.out.println("Gato Loader iniciado.");
 				FileReader fr = new FileReader(arquivo);
 				BufferedReader br = new BufferedReader(fr);
 

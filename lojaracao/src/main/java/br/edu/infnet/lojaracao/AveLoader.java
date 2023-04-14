@@ -28,6 +28,7 @@ public class AveLoader implements ApplicationRunner {
 			String arquivo = "ave.txt";
 
 			try {
+				System.out.println("Ave Loader Iniciado.");
 
 				FileReader fr = new FileReader(arquivo);
 				BufferedReader br = new BufferedReader(fr);

@@ -11,8 +11,9 @@ public class Ave extends Racao {
 	private float peso;
 
 	public Ave() {
-		
+
 	}
+
 	public Ave(String nome, int codigo, float preco, String tipo, String aroma, float peso) {
 		super(nome, codigo, preco);
 		this.tipo = tipo;
@@ -20,10 +21,9 @@ public class Ave extends Racao {
 		this.peso = peso;
 	}
 
-	
 	@Override
 	public float calcularPrecoFinal(float preco) {
-		if (tipo == Constantes.TIPO1 ) {
+		if (tipo == Constantes.TIPO1) {
 			preco += 1;
 		} else if (tipo == Constantes.TIPO3) {
 			preco += 54.4;
@@ -50,7 +50,7 @@ public class Ave extends Racao {
 
 		return sb.toString();
 	}
-	
+
 	public String getTipo() {
 		return tipo;
 	}
@@ -66,9 +66,11 @@ public class Ave extends Racao {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
 	public void setAroma(String aroma) {
 		this.aroma = aroma;
 	}
+
 	public void setPeso(float peso) {
 		this.peso = peso;
 	}

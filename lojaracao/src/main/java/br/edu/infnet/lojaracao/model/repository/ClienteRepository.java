@@ -11,4 +11,7 @@ import br.edu.infnet.lojaracao.model.domain.Cliente;
 public interface ClienteRepository extends CrudRepository<Cliente, Integer>  {
 	@Query("from Cliente c where c.funcionario.id = :funcionarioId")
 	List<Cliente> obterLista(Sort sort, Integer funcionarioId);
+	
+	@Query("from Cliente c where c.id = :clienteId")
+	Cliente obterCliente(Integer clienteId);
 }

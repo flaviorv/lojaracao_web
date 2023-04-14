@@ -43,8 +43,13 @@ public class GatoController {
 	public String telaLista(@RequestParam("id") Optional<String> idParam, Model model) {
 		model.addAttribute("gato", gatoService);
 		if (!idParam.isEmpty()) {
-			gatoService.excluir(Integer.parseInt(idParam.get().toString()));
-		}
+			try {
+				gatoService.excluir(Integer.parseInt(idParam.get().toString()));
+			} catch (Exception e) {
+				model.addAttribute("statusRacao",
+						"Não é possível excluir essa ração. " + "Pode ser que haja dados da ração em vendas. "
+								+ "Se for o caso, exclua os dados da venda antes de excluir a ração.");
+			}		}
 		return "gato/lista";
 	}
 }
