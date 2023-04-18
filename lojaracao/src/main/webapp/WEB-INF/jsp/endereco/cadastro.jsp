@@ -20,7 +20,6 @@ label {
 	margin: 2%;
 }
 
-
 h1 {
 	text-align: center;
 	margin-top: 5%;
@@ -35,13 +34,12 @@ h1 {
 			<label>CEP:</label> <input type="text" required name="cep"
 				value="36684020" placeholder="Ex: 00000000">
 			<button type="submit" value="cep">Pesquisar</button>
-			</form>
-			<div class="cepResult">
-			<b>${cep}</b> <b>${logradouro}</b> <b>${complemento}</b> <b>${bairro}</b>
-			<b>${localidade}</b> <b>${uf}</b>
-			</div>
-			
-		
+		</form>
+		<div class="cepResult">
+			<b>${cep}&nbsp;</b> <b>${logradouro}&nbsp;</b> <b>${complemento}&nbsp;</b>
+			<b>${bairro}&nbsp;</b> <b>${localidade}&nbsp;</b> <b>${uf}</b>
+		</div>
+
 	</div>
 </body>
 </html>

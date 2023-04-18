@@ -17,6 +17,13 @@ public class Endereco {
 	private String localidade;
 	private String uf;
 	
+	public Endereco(String cep, String logradouro, String complemento, String bairro, String localidade, String uf){
+		
+	}
+	public Endereco() {
+		
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

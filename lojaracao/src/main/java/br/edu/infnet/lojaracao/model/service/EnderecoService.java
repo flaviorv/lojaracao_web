@@ -31,7 +31,7 @@ public class EnderecoService {
 			objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
 			Endereco endereco = objectMapper.readValue(informationString, Endereco.class);
-
+			
 			System.out.println(endereco.getBairro());
 			System.out.println("Endereco obtido com sucesso.");
 			return endereco;

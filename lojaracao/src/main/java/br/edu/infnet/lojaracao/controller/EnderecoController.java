@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.infnet.lojaracao.model.domain.Endereco;
-import br.edu.infnet.lojaracao.model.service.ClienteService;
 import br.edu.infnet.lojaracao.model.service.EnderecoService;
 @Controller
 public class EnderecoController {
 	@Autowired
 	EnderecoService enderecoService;
-	@Autowired
-	ClienteService clienteService;
+	
 	@GetMapping(value = "/cep/pesquisar")
 	public ModelAndView telaIndex(@RequestParam("cep") Optional<String> cepParam) {
 		String cep = cepParam.isEmpty()?"":cepParam.get();
@@ -29,7 +27,6 @@ public class EnderecoController {
 			mv.addObject("bairro", endereco.getBairro());
 			mv.addObject("localidade", endereco.getLocalidade());
 			mv.addObject("uf", endereco.getUf());
-			System.out.println(endereco.getBairro());
 		}
 		return mv;
 	}

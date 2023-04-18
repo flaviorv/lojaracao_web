@@ -21,14 +21,15 @@ public class ClienteController {
 
 	@Autowired
 	ClienteService clienteService;
-
 	@RequestMapping(value = "/cadastro/cliente", method = RequestMethod.GET)
 	public String telaCadastro() {
+	
 		return "cliente/cadastro";
 	}
 
 	@PostMapping(value = "/cliente/incluir")
 	public String incluir(Cliente cliente, Endereco endereco, HttpSession session, SessionStatus status) {
+		System.out.println(endereco);
 		status.setComplete();
 		cliente.setFuncionario((Funcionario) session.getAttribute("funcionarioLogado"));
 		cliente.setEndereco(endereco);
@@ -50,5 +51,7 @@ public class ClienteController {
 		}
 		return "cliente/lista";
 	}
+	
+	
 
 }
