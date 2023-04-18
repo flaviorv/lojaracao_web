@@ -19,6 +19,21 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.table {
+	text-align: center;
+}
+
+.bottomButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1, .bottomButton {
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -36,7 +51,7 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 					<c:out value="${ave.obterLista(funcionarioLogado).size()}"></c:out>
 				</c:if>
 			</h2>
-				<h3>${statusRacao}</h3>
+			<h3>${statusRacao}</h3>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -58,7 +73,7 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 								<td>R$${ave.getPreco()}</td>
 								<td>${ave.getTipo()}</td>
 								<td>${ave.getAroma()}</td>
-								<td>${ave.getPeso()}</td>
+								<td>${ave.getPeso()}kg</td>
 								<td>
 									<form action="/lista/ave">
 										<button type="submit" value="${ave.id}" name="id">Excluir</button>
@@ -75,7 +90,7 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 								<td>R$${ave.getPreco()}</td>
 								<td>${ave.getTipo()}</td>
 								<td>${ave.getAroma()}</td>
-								<td>${ave.getPeso()}</td>
+								<td>${ave.getPeso()}kg</td>
 								<td>
 									<form action="/lista/ave">
 										<button type="submit" value="${ave.id}" name="id">Excluir</button>
@@ -87,7 +102,7 @@ br.edu.infnet.lojaracao.model.domain.Ave, br.edu.infnet.lojaracao.model.reposito
 				</tbody>
 			</table>
 		</div>
-		<div class="form-group">
+		<div class="form-group, bottomButton">
 			<a href="/cadastro/ave"><button class="btn btn-primary">Nova
 					Ração</button></a>
 		</div>

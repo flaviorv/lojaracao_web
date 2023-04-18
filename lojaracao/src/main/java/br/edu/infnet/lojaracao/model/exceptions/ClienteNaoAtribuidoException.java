@@ -1,7 +1,8 @@
 package br.edu.infnet.lojaracao.model.exceptions;
 
-public class NumeroBaixoException extends Exception {
-	public NumeroBaixoException(String mensagem) {
+public class ClienteNaoAtribuidoException extends Exception {
+
+	public ClienteNaoAtribuidoException(String mensagem) {
 		super(mensagem);
 	}
 

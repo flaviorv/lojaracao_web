@@ -16,6 +16,21 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.bottomButton {
+	display: flex;
+	justify-content: center;
+}
+
+label {
+	font-weight: bolder;
+}
+
+h1, .bottomButton {
+	text-align: center;
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -43,9 +58,13 @@
 						class="form-control" id="senha" placeholder="Insira sua senha"
 						name="senha" value="123">
 				</div>
-				<button type="submit" class="btn btn-primary">Acessar Conta</button>
+				<div class="form-group, bottomButton">
+					<button type="submit" class="btn btn-primary">Acessar
+						Conta</button>
+				</div>
+
 			</form>
-			<div class="form-group">
+			<div class="form-group, bottomButton">
 				<a href="/cadastro/funcionario"><button class="btn btn-primary">Novo
 						Funcionario</button></a>
 			</div>

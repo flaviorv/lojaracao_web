@@ -17,6 +17,21 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.table {
+	text-align: center;
+}
+
+.bottomButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1, .bottomButton {
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -55,8 +70,18 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 								<td>${gato.getNome()}</td>
 								<td>${gato.getCodigo()}</td>
 								<td>R$${gato.getPreco()}</td>
-								<td>${gato.isFilhotes()}</td>
-								<td>${gato.isCastrado()}</td>
+								<c:if test="${gato.isFilhotes()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${gato.isFilhotes() eq false}">
+									<td>Não</td>
+								</c:if>
+								<c:if test="${gato.isCastrado()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${gato.isCastrado() eq false}">
+									<td>Não</td>
+								</c:if>
 								<td>${gato.getSabor()}</td>
 								<td>
 									<form action="/lista/gato">
@@ -67,13 +92,24 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 						</c:forEach>
 					</c:if>
 					<c:if test="${funcionarioLogado.isAdmin() eq false}">
-						<c:forEach var="gato" items="${gato.obterLista(funcionarioLogado)}">
+						<c:forEach var="gato"
+							items="${gato.obterLista(funcionarioLogado)}">
 							<tr>
 								<td>${gato.getNome()}</td>
 								<td>${gato.getCodigo()}</td>
 								<td>R$${gato.getPreco()}</td>
-								<td>${gato.isFilhotes()}</td>
-								<td>${gato.isCastrado()}</td>
+								<c:if test="${gato.isFilhotes()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${gato.isFilhotes() eq false}">
+									<td>Não</td>
+								</c:if>
+								<c:if test="${gato.isCastrado()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${gato.isCastrado() eq false}">
+									<td>Não</td>
+								</c:if>
 								<td>${gato.getSabor()}</td>
 								<td>
 									<form action="/lista/gato">
@@ -86,7 +122,7 @@ br.edu.infnet.lojaracao.model.domain.Gato, br.edu.infnet.lojaracao.model.reposit
 				</tbody>
 			</table>
 		</div>
-		<div class="form-group">
+		<div class="form-group, bottomButton">
 
 			<a href="/cadastro/gato"><button class="btn btn-primary">Nova
 					Ração</button></a>

@@ -15,9 +15,25 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.table {
+	text-align: center;
+}
+
+
+.bottomButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1, .bottomButton {
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
-	<div>
+	<div class="menu">
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</div>
 	<div class="container">
@@ -40,6 +56,7 @@
 						<th class="table-info">Endereço</th>
 						<th class="table-info">Cliente</th>
 						<th class="table-info">Rações</th>
+						<th class="table-info">Prazo</th>
 						<th class="table-info"></th>
 					</tr>
 				</thead>
@@ -54,14 +71,18 @@
 								<c:if test="${venda.isEntrega() eq false}">
 									<td>Não</td>
 								</c:if>
-								<td>${venda.getEndereco()}</td>
+								<td>${venda.getCliente().getEndereco()}</td>
 								<td><p>${venda.getCliente().getNome()}</p>
 									<p>${venda.getCliente().getTelefone()}</p></td>
-								<td><c:forEach var="v" items="${venda.getRacoes()}">
-										<p>${v.getNome()} - R$${v.getPreco()}</p>
-									</c:forEach></td>
+								<td>${venda.getRacoes().size()}</td>
+								<c:if test="${venda.getPrazo() == 0}">
+									<td>À vista</td>
+								</c:if>
+								<c:if test="${venda.getPrazo() > 0}">
+									<td>${venda.getPrazo()}dias</td>
+								</c:if>
 								<td>
-									<form action="/lista/venda">
+									<form class="excludeButton" action="/lista/venda">
 										<button type="submit" value="${venda.id}" name="id">Excluir</button>
 									</form>
 								</td>
@@ -79,13 +100,18 @@
 								<c:if test="${venda.isEntrega() eq false}">
 									<td>Não</td>
 								</c:if>
-								<td>${venda.getEndereco()}</td>
+								<td>${venda.getCliente().getEndereco()}</td>
 								<td><p>${venda.getCliente().getNome()}</p>
 									<p>${venda.getCliente().getTelefone()}</p></td>
 								<td><c:forEach var="v" items="${venda.getRacoes()}">
-										<p>${v.getNome()} - R$${v.getPreco()}</p>
+										<p>${v.getNome()}-R$${v.getPreco()}</p>
 									</c:forEach></td>
-
+								<c:if test="${venda.getPrazo() == 0}">
+									<td>À vista</td>
+								</c:if>
+								<c:if test="${venda.getPrazo() < 0}">
+									<td>${venda.getPrazo()}dias</td>
+								</c:if>
 								<td>
 									<form action="/lista/venda">
 										<button type="submit" value="${venda.id}" name="id">Excluir</button>
@@ -97,7 +123,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="form-group">
+		<div class="form-group, bottomButton">
 			<a href="/cadastro/venda"><button class="btn btn-primary">Nova
 					Venda</button></a>
 		</div>

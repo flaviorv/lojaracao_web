@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.domain.Venda;
+import br.edu.infnet.lojaracao.model.exceptions.RacaoNaoAtribuidaException;
 import br.edu.infnet.lojaracao.model.service.ClienteService;
 import br.edu.infnet.lojaracao.model.service.RacaoService;
 import br.edu.infnet.lojaracao.model.service.VendaService;
@@ -32,11 +33,22 @@ public class VendaController {
 	}
 	
 	@PostMapping(value = "/venda/incluir")
-	public String incluir(Venda venda, HttpSession session, SessionStatus status) {
-		status.setComplete();
-		venda.setFuncionario((Funcionario)	session.getAttribute("funcionarioLogado"));
-		vendaService.incluir(venda);
-		return "redirect:/lista/venda";
+	public String incluir(Venda venda, HttpSession session, SessionStatus status, Model model){
+		try {
+			venda.getRacoes();
+			status.setComplete();
+			venda.setFuncionario((Funcionario)	session.getAttribute("funcionarioLogado"));
+			vendaService.incluir(venda);
+			return "redirect:/lista/venda";
+			
+		} catch (RacaoNaoAtribuidaException e) {
+			System.out.println(e.getMessage());
+			model.addAttribute("racaoException", "Ração não informada");
+			model.addAttribute("cliente", clienteService);
+			model.addAttribute("racao", racaoService);
+			return "venda/cadastro";
+		}
+		
 	}
 	
 	@GetMapping(value = "/lista/venda")

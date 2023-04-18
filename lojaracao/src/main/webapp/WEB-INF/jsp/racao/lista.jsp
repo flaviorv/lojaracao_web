@@ -17,6 +17,20 @@ br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.reposi
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.table {
+	text-align: center;
+}
+.bottomButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1, .bottomButton {
+	margin-top:5%;	
+}
+</style>
 </head>
 <body>
 	<div>
@@ -49,7 +63,7 @@ br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.reposi
 							<tr>
 								<td>${racao.getNome()}</td>
 								<td>${racao.getCodigo()}</td>
-								<td>${racao.getPreco()}</td>
+								<td>R$${racao.getPreco()}</td>
 							</tr>
 						</c:forEach>
 					</c:if>
@@ -59,14 +73,14 @@ br.edu.infnet.lojaracao.model.domain.Racao, br.edu.infnet.lojaracao.model.reposi
 							<tr>
 								<td>${racao.getNome()}</td>
 								<td>${racao.getCodigo()}</td>
-								<td>${racao.getPreco()}</td>
+								<td>R$${racao.getPreco()}</td>
 							</tr>
 						</c:forEach>
 					</c:if>
 
 				</tbody>
 			</table>
-			<div class="form-group">
+			<div class="form-group, bottomButton">
 				<a href="/"><button class="btn btn-primary">Página
 						inicial</button></a>
 			</div>

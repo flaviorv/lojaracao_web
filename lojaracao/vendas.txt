@@ -1,3 +1,3 @@
-10/05/2023;true;Rua Tiradentes, 161, Bairro Santa Helena, Juiz de Fora - MG
-10/05/2023;true;Avenida Brasil, 1352, Bairro Centro, São Paulo - SP
-10/05/2023;false;Avenida Rio Branco, sem nº, Bairro São Sebastião, Telêmaco Borba - PR
+10/05/2023;true;0
+10/05/2023;true;30
+10/05/2023;false;60

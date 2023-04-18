@@ -11,8 +11,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.lojaracao.model.domain.Funcionario;
-import br.edu.infnet.lojaracao.model.domain.Funcionario;
-import br.edu.infnet.lojaracao.model.service.FuncionarioService;
 import br.edu.infnet.lojaracao.model.service.FuncionarioService;
 
 @Order(1)

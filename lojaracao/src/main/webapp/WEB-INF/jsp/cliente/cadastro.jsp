@@ -9,6 +9,22 @@
 <title>Loja de Ração - Cadastro</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<style type="text/css">
+.bottomButton {
+	display: flex;
+	justify-content: center;
+}
+
+
+label {
+	font-weight: bolder;
+}
+
+h1, .bottomButton {
+	text-align: center;
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -34,12 +50,12 @@
 					id="telefone" required>
 			</div>
 			<c:if test="${not empty logradouro}">
-				<div class="form-group">
+				<div class="form-group, bottomButton">
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</div>
 			</c:if>
 			<c:if test="${empty logradouro}">
-				<div class="form-group">
+				<div class="form-group, bottomButton">
 					<button type="submit" class="btn btn-primary"
 						style="pointer-events: none; background-color: gray;">Cadastrar</button>
 				</div>

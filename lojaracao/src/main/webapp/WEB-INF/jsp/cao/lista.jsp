@@ -17,6 +17,21 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.table {
+	text-align: center;
+}
+
+.bottomButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1, .bottomButton {
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -34,7 +49,7 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 					<c:out value="${cao.obterLista(funcionarioLogado).size()}"></c:out>
 				</c:if>
 			</h2>
-				<h3>${statusRacao}</h3>
+			<h3>${statusRacao}</h3>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -53,9 +68,19 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 							<tr>
 								<td>${cao.getNome()}</td>
 								<td>${cao.getCodigo()}</td>
-								<td>${cao.getPreco()}</td>
-								<td>${cao.isSemCorante()}</td>
-								<td>${cao.isFilhotes()}</td>
+								<td>R$${cao.getPreco()}</td>
+								<c:if test="${cao.isSemCorante()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${cao.isSemCorante() eq false}">
+									<td>Não</td>
+								</c:if>
+								<c:if test="${cao.isFilhotes()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${cao.isFilhotes() eq false}">
+									<td>Não</td>
+								</c:if>
 								<td>${cao.getPorte()}</td>
 								<td>
 									<form action="/lista/cao">
@@ -70,9 +95,19 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 							<tr>
 								<td>${cao.getNome()}</td>
 								<td>${cao.getCodigo()}</td>
-								<td>${cao.getPreco()}</td>
-								<td>${cao.isSemCorante()}</td>
-								<td>${cao.isFilhotes()}</td>
+								<td>R$${cao.getPreco()}</td>
+								<c:if test="${cao.isSemCorante()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${cao.isSemCorante() eq false}">
+									<td>Não</td>
+								</c:if>
+								<c:if test="${cao.isFilhotes()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${cao.isFilhotes() eq false}">
+									<td>Não</td>
+								</c:if>
 								<td>${cao.getPorte()}</td>
 								<td>
 									<form action="/lista/cao">
@@ -85,7 +120,7 @@ br.edu.infnet.lojaracao.model.domain.Cao, br.edu.infnet.lojaracao.model.reposito
 				</tbody>
 			</table>
 		</div>
-		<div class="form-group">
+		<div class="form-group, bottomButton">
 			<a href="/cadastro/cao"><button class="btn btn-primary">Nova
 					Ração</button></a>
 		</div>

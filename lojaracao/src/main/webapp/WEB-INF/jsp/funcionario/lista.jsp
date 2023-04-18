@@ -1,8 +1,8 @@
 <%@page import="org.springframework.beans.factory.annotation.Autowired"%>
 <%@ page language="java"
 	import="br.edu.infnet.lojaracao.model.repository.FuncionarioRepository, 
-br.edu.infnet.lojaracao.model.domain.Funcionario" 
-contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+br.edu.infnet.lojaracao.model.domain.Funcionario"
+	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +18,20 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.table {
+	text-align: center;
+}
+.bottomButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1, .bottomButton {
+	margin-top:5%;	
+}
+</style>
 </head>
 <body>
 	<div>
@@ -45,7 +59,12 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 							<tr>
 								<td>${funcionario.getNome()}</td>
 								<td>${funcionario.getEmail()}</td>
-								<td>${funcionario.isAdmin()}</td>
+								<c:if test="${funcionario.isAdmin()}">
+									<td>Sim</td>
+								</c:if>
+								<c:if test="${funcionario.isAdmin() eq false}">
+									<td>Não</td>
+								</c:if>
 								<td>
 									<form action="/lista/funcionario">
 										<button type="submit" value="${funcionario.id}" name="id">Excluir</button>
@@ -57,7 +76,7 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 				</tbody>
 			</table>
 		</div>
-		<div class="form-group">
+		<div class="form-group, bottomButton">
 			<a href="/cadastro/funcionario"><button class="btn btn-primary">Novo
 					Funcionario</button></a>
 		</div>

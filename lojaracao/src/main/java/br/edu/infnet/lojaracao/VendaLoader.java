@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.lojaracao.model.domain.Funcionario;
 import br.edu.infnet.lojaracao.model.domain.Racao;
 import br.edu.infnet.lojaracao.model.domain.Venda;
+import br.edu.infnet.lojaracao.model.exceptions.ClienteNaoAtribuidoException;
+import br.edu.infnet.lojaracao.model.exceptions.DataNaoAtribuidaException;
+import br.edu.infnet.lojaracao.model.exceptions.RacaoNaoAtribuidaException;
 import br.edu.infnet.lojaracao.model.service.ClienteService;
 import br.edu.infnet.lojaracao.model.service.RacaoService;
 import br.edu.infnet.lojaracao.model.service.VendaService;
@@ -44,16 +47,42 @@ public class VendaLoader implements ApplicationRunner {
 
 				while (linha != null) {
 					campos = linha.split(";");
+					try {
 
-					Venda venda = new Venda(campos[0], Boolean.parseBoolean(campos[1]), campos[2],
-							clienteService.obteCliente(quantidade + 1), (List<Racao>) racaoService.obterLista());
+						Venda venda = new Venda(campos[0], Boolean.parseBoolean(campos[1]), Integer.parseInt(campos[2]),
+								clienteService.obteCliente(quantidade + 1), (List<Racao>) racaoService.obterLista());
+						Funcionario funcionario = new Funcionario();
+						funcionario.setId(1);
+						venda.setFuncionario(funcionario);
+						vendaService.incluir(venda);
+						System.out.println(venda);
+					} catch (ClienteNaoAtribuidoException e) {
+						System.out.println(e.getMessage());
+					} catch (DataNaoAtribuidaException e) {
+						System.out.println(e.getMessage());
+					} catch (RacaoNaoAtribuidaException e) {
+						System.out.println(e.getMessage());
+					}
+
+					linha = br.readLine();
+					quantidade++;
+				}
+
+				try {
+
+					Venda venda = new Venda(null, Boolean.parseBoolean(campos[1]), Integer.parseInt(campos[2]),
+							clienteService.obteCliente(quantidade), (List<Racao>) racaoService.obterLista());
 					Funcionario funcionario = new Funcionario();
 					funcionario.setId(1);
 					venda.setFuncionario(funcionario);
 					vendaService.incluir(venda);
 					System.out.println(venda);
-					linha = br.readLine();
-					quantidade++;
+				} catch (DataNaoAtribuidaException e) {
+					System.out.println(e.getMessage());
+				} catch (ClienteNaoAtribuidoException e) {
+					System.out.println(e.getMessage());
+				} catch (RacaoNaoAtribuidaException e) {
+					System.out.println(e.getMessage());
 				}
 
 				System.out.println("Quantidade de vendas adicionadas pelo loader: " + quantidade);

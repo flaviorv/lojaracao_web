@@ -49,9 +49,10 @@ li a:hover {
 					href="/cadastro/funcionario">Criar Conta</a></li>
 			</c:if>
 			<c:if test="${not empty funcionarioLogado }">
+				<li><span>RAÇÕES VAROTO - Nutrindo com qualidade!</span></li>
+				<li><span>${funcionarioLogado.getNome()}</span><a
+					href="/funcionario/sair">Sair</a></li>
 
-				<li><span>${funcionarioLogado.getNome()}</span></li>
-				<li><a href="/funcionario/sair">Sair</a></li>
 			</c:if>
 		</ul>
 		<c:if test="${not empty funcionarioLogado}">

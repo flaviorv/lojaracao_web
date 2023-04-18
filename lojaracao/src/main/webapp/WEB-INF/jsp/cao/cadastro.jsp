@@ -10,6 +10,28 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 <title>Loja de Ração - Cadastro</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<style type="text/css">
+.bottomButton {
+	display: flex;
+	justify-content: center;
+}
+
+.ckeckboxesAndRadios {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+}
+
+label {
+	font-weight: bolder;
+}
+
+h1, .bottomButton {
+	text-align: center;
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -32,54 +54,56 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 					min="0.01" max="999999" name="preco" value="21"
 					class="form-control">
 			</div>
-			<div class="form-group">
-				<label>Para Filhotes: </label>
-				<div class="form-check">
-					<label class="form-check-label"> <input type="radio"
-						name="filhotes" value="true" class="form-check-input">Sim
-					</label>
+			<div class="ckeckboxesAndRadios">
+				<div class="form-group">
+					<label>Para Filhotes: </label>
+					<div class="form-check">
+						<input type="radio" name="filhotes" value="true"
+							class="form-check-input">Sim
+
+					</div>
+					<div class="form-check">
+						<input type="radio" name="filhotes" value="false"
+							class="form-check-input" checked>Não
+
+					</div>
 				</div>
-				<div class="form-check">
-					<label class="form-check-label"> <input type="radio"
-						name="filhotes" value="false" class="form-check-input" checked>Não
-					</label>
+				<div class="form-group">
+					<label>Sem Corante: </label>
+					<div class="form-check">
+						<input type="radio" name="semCorante" value="true"
+							class="form-check-input">Sim
+
+					</div>
+					<div class="form-check">
+						<input type="radio" name="semCorante" value="false"
+							class="form-check-input" checked>Não
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Porte:</label>
+					<div class="form-check">
+						<input type="radio" name="porte" value="<%=Constantes.PORTE1%>"
+							class="form-check-input" checked>
+						<%=Constantes.PORTE1%>
+
+					</div>
+					<div class="form-check">
+						<input type="radio" name="porte" value="<%=Constantes.PORTE2%>"
+							class="form-check-input">
+						<%=Constantes.PORTE2%>
+
+					</div>
+					<div class="form-check">
+						<input type="radio" name="porte" value="<%=Constantes.PORTE3%>"
+							class="form-check-input">
+						<%=Constantes.PORTE3%>
+
+					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<label>Sem Corante: </label>
-				<div class="form-check">
-					<label class="form-check-label"> <input type="radio"
-						name="semCorante" value="true" class="form-check-input">Sim
-					</label>
-				</div>
-				<div class="form-check">
-					<label class="form-check-label"> <input type="radio"
-						name="semCorante" value="false" class="form-check-input" checked>Não
-					</label>
-				</div>
-			</div>
-			<div class="form-group">
-				<label>Porte:</label>
-				<div class="form-check">
-					<label class="form-check-label"> <input type="radio"
-						name="porte" value="<%=Constantes.PORTE1%>"
-						class="form-check-input" checked> <%=Constantes.PORTE1%>
-					</label>
-				</div>
-				<div class="form-check">
-					<label class="form-check-label"> <input type="radio"
-						name="porte" value="<%=Constantes.PORTE2%>"
-						class="form-check-input"> <%=Constantes.PORTE2%>
-					</label>
-				</div>
-				<div class="form-check">
-					<label class="form-check-label"> <input type="radio"
-						name="porte" value="<%=Constantes.PORTE3%>"
-						class="form-check-input"> <%=Constantes.PORTE3%>
-					</label>
-				</div>
-			</div>
-			<div class="form-group">
+			<div class="form-group, bottomButton">
 				<button type="submit" class="btn btn-primary">Cadastrar</button>
 			</div>
 		</form>

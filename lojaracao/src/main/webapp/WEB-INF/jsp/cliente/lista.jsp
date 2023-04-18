@@ -19,6 +19,20 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.table {
+	text-align: center;
+}
+.bottomButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1, .bottomButton {
+	margin-top:5%;	
+}
+</style>
 </head>
 <body>
 	<div>
@@ -83,7 +97,7 @@ br.edu.infnet.lojaracao.model.repository.FuncionarioRepository"
 				</tbody>
 			</table>
 		</div>
-		<div class="form-group">
+		<div class="form-group, bottomButton">
 			<a href="/cadastro/cliente"><button class="btn btn-primary">Novo
 					Cliente</button></a>
 		</div>

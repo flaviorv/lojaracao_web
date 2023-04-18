@@ -9,6 +9,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<style type="text/css">
+.bottomButton {
+	display: flex;
+	justify-content: center;
+}
+
+label {
+	font-weight: bolder;
+}
+
+h1, .bottomButton {
+	text-align: center;
+	margin-top: 5%;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -24,13 +39,14 @@
 			</div>
 			<div class="form-group">
 				<label for="email">E-mail:</label> <input type="email" name="email"
-					value="flavio@al.infnet.edu.com" class="form-control" id="email" required>
+					value="flavio@al.infnet.edu.com" class="form-control" id="email"
+					required>
 			</div>
 			<div class="form-group">
 				<label for="senha">Senha:</label> <input type="password"
 					name="senha" value="123" class="form-control" id="senha">
 			</div>
-			<div class="form-group">
+			<div class="form-group, bottomButton">
 				<button type="submit" class="btn btn-primary">Criar Conta</button>
 			</div>
 		</form>

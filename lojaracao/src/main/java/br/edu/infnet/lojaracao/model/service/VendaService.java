@@ -30,4 +30,5 @@ public class VendaService {
 	public Collection<Venda> obterLista(Funcionario funcionario) {
 		return vendaRepository.obterLista(Sort.by(Direction.ASC, "data"), funcionario.getId());
 	}
+	
 }
