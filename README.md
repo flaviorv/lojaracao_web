@@ -1,20 +1,34 @@
-# lojaracao_web
--Web application for Rações Varoto farm store
--CRUD of clients, staff(system users), animal foods and sales
--Architecture: MVC
--Paradigm: OOP
--Has mocked data for testing
--Lenguage: Java
--Framework: Springboot
+# Aplicação para venda de rações
+- Tela Inicial
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaInicial.png" height="380" />
+  
+- Tela de Acesso
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaAcesso.png" height="380" />
 
-For execute in your machine:
--Download Java SE Development Kit 19
--Download Wampserver 3.3.0(if Windows) or Xampp(if Linux or MacOS)
--Download Eclipse Enterprise
--Open the wamp or xamp and enable apache and mysql
--Open the eclipse and open the project
--In src/main/java/br.edu.infnet.lojaracao/LojaracaoApplication.java click on mouse right button and select 'Run as' and 'Maven build...'
--In Goals type 'clean package', click Apply and Run
--Repeat in LojaracaoApplication.java 'Run as', forward click in 'Java Application'
--Check in the console the port(in my machine is the 8080)
--If is the same port. Type in the browser: http://localhost:8080/
+- Tela Inicial após Funcionário logar
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaLogado.png" height="380" />
+
+- Tela de Cadastro de Ração para Cachorros
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaCadastroRacao.png" height="380" />
+
+-Tela de Listagem de Rações para Cachorros
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaListagemRacao.png" height="380" />
+
+-Tela de Cadastro de Cliente
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaCadastroCliente.png" height="380" />
+
+- Tela de Listagem de Clientes
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaListagemCliente.png" height="380" />
+
+- Tela de Cadastro de Vendas
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaCadastroVenda.png" height="380" />
+
+- Tela de Listagem de Vendas
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaListagemVenda.png" height="380" />
+
+-Tela de Listagem de Funcionários
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaListagemFuncionario.png" height="380" />
+
+- Tela 
+<img src="./lojaracao/src/main/resources/static/imagens/tela/telaTodasRacoes.png" height="380" />
+
